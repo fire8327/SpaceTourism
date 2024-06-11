@@ -1,10 +1,56 @@
 <template>
-    <div class="col-span-full w-full bg-[url(/images/hero/index.jpg)] bg-cover min-h-screen relative">
-        <div class="absolute top-0 w-full bg-gradient-to-b from-[#0B0D17] to-transparent h-40"></div>
-        <div class="absolute bottom-0 w-full bg-gradient-to-t from-[#0B0D17] to-transparent h-40"></div>
+    <div class="col-span-full w-full bg-[url(/images/hero/index.jpg)] bg-cover min-h-[calc(100vh-80px)] relative grid-container">
+        <div class="absolute col-span-full top-0 w-full bg-gradient-to-b from-[#0B0D17] to-transparent h-40"></div>
+        <div class="absolute col-span-full inset-0 bg-[#0B0D17]/30"></div>
+        <div class="flex flex-col gap-6 self-center z-[1]">
+            <p class="text-2xl md:text-3xl xl:text-4xl font-Cormorant">Итак, вы хотите отправиться в</p>
+            <p class="text-4xl md:text-5xl xl:text-6xl font-Cormorant uppercase">Космос</p>
+            <p class="max-w-xl">Давайте признаем, если вы хотите отправиться в космос, то лучше уж действительно отправиться в открытый космос, а не зависать где-то на его границе. Ну что ж, расслабьтесь, потому что мы подарим вам по-настоящему незабываемый опыт!</p>
+            <NuxtLink class="rounded-full overflow-hidden border-0 border-white/30 hover:border-[20px] font-Cormorant text-[#0B0D17] w-fit uppercase transition-all duration-500">
+                <span class="bg-white px-4 py-2">Исследовать</span>
+            </NuxtLink>
+        </div>
+        <div class="absolute col-span-full bottom-0 w-full bg-gradient-to-t from-[#0B0D17] to-transparent h-40"></div>
+    </div>
+    <div class="flex flex-col gap-6">
+        <p class="text-4xl font-Cormorant">Преимущества</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+            <div v-for="advantage in advantages" class="flex flex-col gap-4 border border-white/25 rounded-xl p-4 bg-white/5 transition-all duration-500 hover:scale-105 hover:z-[4]" @mouseenter="isAdvantagesShow = true"  @mouseleave="isAdvantagesShow = false">
+                <div class="flex items-center gap-4 grow">
+                    <Icon class="text-3xl text-[#D0D6F9]" :name="advantage.icon"/>
+                    <p class="font-Cormorant text-2xl">{{ advantage.title }}</p>
+                </div>
+                <p>{{ advantage.description }}</p>
+            </div>
+        </div>
+        <div class="fixed inset-0 backdrop-blur-xl transition-all duration-500" :class="isAdvantagesShow ? 'opacity-100 z-[3]' : ' opacity-0 z-[-1]'"></div>
     </div>
 </template>
 
 <script setup>
+    /* преимущества */
+    const isAdvantagesShow = ref(false)
 
+    const advantages = [
+        {
+            icon: 'ion:ios-rocket',
+            title: 'Комфортабельные ракеты',
+            description: 'Наши ракеты обеспечивают максимальный комфорт и безопасность для вашего космического путешествия. Современные технологии и высокий уровень комфорта позволят вам наслаждаться полетом в полной мере.',
+        },
+        {
+            icon: 'ion:ios-nutrition',
+            title: 'Космическое питание',
+            description: 'На борту наших ракет вас ждет разнообразное и сбалансированное питание, специально разработанное для космических путешествий. Вкусные и полезные блюда обеспечат вам энергию и хорошее самочувствие на протяжении всего полета.',
+        },
+        {
+            icon: 'tabler:brand-github-copilot',
+            title: 'Состав пилотов',
+            description: 'Наши пилоты – это высококвалифицированные профессионалы с богатым опытом работы в космосе. Все они являются бывшими космонавтами, что гарантирует высочайший уровень безопасности и уверенность в полете.',
+        },
+        {
+            icon: 'material-symbols:mountain-flag',
+            title: 'Экскурсии на луноходе',
+            description: 'Мы предлагаем уникальные экскурсии на луноходе по Море Ясности и Океану Бурь. Эти незабываемые поездки позволят вам исследовать поверхность Луны и увидеть захватывающие виды, которые невозможно описать словами.',
+        }
+    ]
 </script>
