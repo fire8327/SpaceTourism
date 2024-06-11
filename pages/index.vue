@@ -87,7 +87,7 @@
         <div class="flex flex-col gap-6 z-[1]">
             <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold"><span class="text-white/50">04</span> Контакты</p>
             <div class="flex gap-6 max-lg:flex-col">
-                <FormKit type="form" :actions="false" messages-class="hidden" form-class="flex flex-col gap-6 px-4 py-8 bg-white/5 backdrop-blur-2xl rounded-xl w-full lg:w-1/2 border border-white/15">
+                <FormKit type="form" :actions="false" messages-class="hidden" form-class="flex flex-col justify-center gap-6 px-4 py-8 bg-white/5 backdrop-blur-2xl rounded-xl w-full lg:w-1/2 border border-white/15">
                     <p class="text-2xl font-Cormorant font-semibold uppercase text-center">Свяжитесь с нами</p>
                     <div class="flex gap-4">
                         <Icon class="text-3xl opacity-50" name="material-symbols:person"/>
