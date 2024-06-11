@@ -11,7 +11,7 @@
                     <div class="flex flex-col gap-4">
                         <p class="uppercase font-Cormorant tracking-widest font-semibold text-lg">Ссылки</p>
                         <NuxtLink class="flex flex-col transition-all duration-500 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full hover:ml-2">Направления</NuxtLink>
-                        <NuxtLink class="flex flex-col transition-all duration-500 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full hover:ml-2">Направления</NuxtLink>
+                        <NuxtLink to="/about" class="flex flex-col transition-all duration-500 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full hover:ml-2">О компании</NuxtLink>
                         <NuxtLink class="flex flex-col transition-all duration-500 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full hover:ml-2">Направления</NuxtLink>
                         <NuxtLink class="flex flex-col transition-all duration-500 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full hover:ml-2">Направления</NuxtLink>
                     </div>
