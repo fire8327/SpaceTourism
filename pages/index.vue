@@ -83,6 +83,46 @@
             <span class="bg-white px-4 py-2">Посмотреть ещё</span>
         </NuxtLink>
     </div>
+    <div class="col-span-full w-full bg-[url(/images/contacts/main.jpg)] py-6 grid-container relative bg-cover bg-center">
+        <div class="flex flex-col gap-6 z-[1]">
+            <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold"><span class="text-white/50">04</span> Контакты</p>
+            <div class="flex gap-6 max-lg:flex-col">
+                <FormKit type="form" :actions="false" messages-class="hidden" form-class="flex flex-col gap-6 px-4 py-8 bg-white/5 backdrop-blur-2xl rounded-xl w-full lg:w-1/2 border border-white/15">
+                    <p class="text-2xl font-Cormorant font-semibold uppercase text-center">Свяжитесь с нами</p>
+                    <div class="flex gap-4">
+                        <Icon class="text-3xl opacity-50" name="material-symbols:person"/>
+                        <FormKit validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Имя" name="Имя" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
+                    </div>
+                    <div class="flex gap-4">
+                        <Icon class="text-3xl opacity-50" name="mdi:email-variant"/>
+                        <FormKit validation="required|email" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Email" name="Email" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
+                    </div>
+                    <div class="flex gap-4">
+                        <Icon class="text-3xl opacity-50" name="material-symbols:call"/>
+                        <FormKit validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Телефон" name="Телефон" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
+                    </div>
+                    <button type="submit" class="px-4 py-0.5 rounded-full bg-white hover:bg-white/5 text-[#0B0D17] w-full md:w-1/2 font-Cormorant mx-auto uppercase relative overflow-hidden group">
+                        <span class="transition-all duration-700 group-hover:opacity-0 inset-0.5">&nbsp;</span>
+                        <span class="absolute inset-0 text-white transition-all duration-700 translate-x-full group-hover:translate-x-0 z-[2]">Отправить заявку</span>
+                    </button>
+                </FormKit>
+                <div class="flex flex-col gap-4 rounded-xl px-4 py-8 bg-white/5 backdrop-blur-2xl w-full lg:w-1/2 border border-white/15">
+                    <p class="text-base md:text-lg xl:text-xl font-Cormorant uppercase">ДАЙТЕ НАМ ЗНАТЬ</p>
+                    <p class="text-4xl md:text-5xl xl:text-6xl font-Cormorant">Планируете визит? <br>Мы можем помочь!</p>
+                    <p class="max-w-xl">Сделайте ваше космическое приключение реальностью с нашей помощью. Независимо от ваших потребностей и желаний, мы предлагаем широкий спектр услуг, чтобы ваш визит в космос был незабываемым!</p> 
+                    <NuxtLink to="https://t.me/fire83274" target="_blank" class="text-[#D0D6F9] flex items-center gap-2 transition-all duration-500 hover:opacity-50 w-fit">
+                        <Icon class="text-3xl" name="ic:twotone-telegram"/>
+                        <span>fire83274</span>
+                    </NuxtLink>
+                    <div class="text-[#D0D6F9] flex items-center gap-2 font">
+                        <Icon class="text-3xl" name="material-symbols:alarm"/>
+                        <span>ПН-ПТ 10:00-18:00 (по земному времени)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full col-span-full absolute inset-0 bg-black/30"></div>
+    </div>  
 </template>
 
 <script setup>

@@ -9,10 +9,10 @@
                 <NuxtLink class="flex flex-col after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full">Каталог</NuxtLink>
                 <NuxtLink class="flex flex-col after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full">О компании</NuxtLink>
                 <div class="flex items-center gap-4">
-                    <NuxtLink to="mailto:fire83274@gmail.com">
+                    <NuxtLink to="mailto:fire83274@gmail.com" class="transition-all duration-500 hover:opacity-50 w-fit">
                         <Icon class="text-3xl text-[#D0D6F9]" name="mdi:email-variant"/>
                     </NuxtLink>
-                    <NuxtLink to="https://t.me/fire83274" target="_blank">
+                    <NuxtLink to="https://t.me/fire83274" target="_blank" class="transition-all duration-500 hover:opacity-50 w-fit">
                         <Icon class="text-3xl text-[#D0D6F9]" name="ic:twotone-telegram"/>
                     </NuxtLink>
                 </div>
