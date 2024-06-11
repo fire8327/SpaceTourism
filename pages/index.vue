@@ -114,10 +114,14 @@
                         <Icon class="text-3xl" name="ic:twotone-telegram"/>
                         <span>fire83274</span>
                     </NuxtLink>
-                    <div class="text-[#D0D6F9] flex items-center gap-2 font">
-                        <Icon class="text-3xl" name="material-symbols:alarm"/>
-                        <span>ПН-ПТ 10:00-18:00 (по земному времени)</span>
-                    </div>
+                    <NuxtLink to="mailto:fire83274@gmail.com" class="text-[#D0D6F9] flex items-center gap-2 transition-all duration-500 hover:opacity-50 w-fit">
+                        <Icon class="text-3xl text-[#D0D6F9]" name="mdi:email-variant"/>
+                        <span>fire83274@gmail.com</span>
+                    </NuxtLink>                     
+                    <NuxtLink to="tel:8 909 304-48-26" class="text-[#D0D6F9] flex items-center gap-2 transition-all duration-500 hover:opacity-50 w-fit">
+                        <Icon class="text-3xl text-[#D0D6F9]" name="material-symbols:call"/>
+                        <span>8 909 304-48-26</span>
+                    </NuxtLink>                     
                 </div>
             </div>
         </div>
