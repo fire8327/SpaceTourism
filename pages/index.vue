@@ -101,8 +101,8 @@
                         <Icon class="text-3xl opacity-50" name="material-symbols:call"/>
                         <FormKit validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Телефон" name="Телефон" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
                     </div>
-                    <button type="submit" class="px-4 py-0.5 rounded-full bg-white hover:bg-white/5 text-[#0B0D17] w-full md:w-1/2 font-Cormorant mx-auto uppercase relative overflow-hidden group">
-                        <span class="transition-all duration-700 group-hover:opacity-0 inset-0.5">&nbsp;</span>
+                    <button type="submit" class="px-4 py-0.5 rounded-full hover:bg-white/5 h-8 text-[#0B0D17] w-full md:w-1/2 font-Cormorant mx-auto uppercase relative overflow-hidden group">
+                        <span class="transition-all duration-700 bg-white absolute inset-0 group-hover:-translate-x-full rounded-xl">Отправить заявку</span>
                         <span class="absolute inset-0 text-white transition-all duration-700 translate-x-full group-hover:translate-x-0 z-[2]">Отправить заявку</span>
                     </button>
                 </FormKit>
