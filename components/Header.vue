@@ -6,8 +6,9 @@
                 <span class="font-Cormorant">SpaceTourism</span>
             </NuxtLink>
             <nav class="flex items-center gap-6 transition-all duration-500 z-[5] max-lg:absolute max-lg:left-0 max-lg:w-full max-lg:flex-col max-lg:py-6 max-lg:backdrop-blur-xl max-lg:h-screen max-lg:border-t border-white" :class="isMenuShow ? 'max-lg:top-full' : 'max-lg:top-0 max-lg:-translate-y-full'">
-                <NuxtLink class="flex flex-col after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full">Направления</NuxtLink>
-                <NuxtLink to="/about" class="flex flex-col after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full">О компании</NuxtLink>
+                <NuxtLink to="/" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">00</span> Главная</NuxtLink>
+                <NuxtLink class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">01</span> Направления</NuxtLink>
+                <NuxtLink to="/about" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">02</span> О компании</NuxtLink>
                 <div class="flex items-center gap-4">
                     <NuxtLink to="mailto:fire83274@gmail.com" class="transition-all duration-500 hover:opacity-50 w-fit">
                         <Icon class="text-3xl text-[#D0D6F9]" name="mdi:email-variant"/>
@@ -28,3 +29,9 @@
     /* показ мобильного меню */
     const isMenuShow = ref(false)
 </script>
+
+<style>
+.router-link-active::after {
+    width: 100%;
+}
+</style>
