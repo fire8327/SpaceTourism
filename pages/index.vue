@@ -16,7 +16,7 @@
         <p class="text-4xl font-Cormorant">Преимущества</p>
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
             <div v-for="advantage in advantages" class="flex flex-col gap-4 border border-white/25 rounded-xl p-4 bg-white/5 transition-all duration-500 hover:scale-105 hover:z-[4]" @mouseenter="isAdvantagesShow = true"  @mouseleave="isAdvantagesShow = false">
-                <div class="flex items-center gap-4 grow">
+                <div class="flex items-center gap-4">
                     <Icon class="text-3xl text-[#D0D6F9]" :name="advantage.icon"/>
                     <p class="font-Cormorant text-2xl">{{ advantage.title }}</p>
                 </div>
@@ -34,7 +34,7 @@
     const advantages = [
         {
             icon: 'ion:ios-rocket',
-            title: 'Комфортабельные ракеты',
+            title: 'Комфортные ракеты',
             description: 'Наши ракеты обеспечивают максимальный комфорт и безопасность для вашего космического путешествия. Современные технологии и высокий уровень комфорта позволят вам наслаждаться полетом в полной мере.',
         },
         {
@@ -49,7 +49,7 @@
         },
         {
             icon: 'material-symbols:mountain-flag',
-            title: 'Экскурсии на луноходе',
+            title: 'Экскурсии',
             description: 'Мы предлагаем уникальные экскурсии на луноходе по Море Ясности и Океану Бурь. Эти незабываемые поездки позволят вам исследовать поверхность Луны и увидеть захватывающие виды, которые невозможно описать словами.',
         }
     ]
