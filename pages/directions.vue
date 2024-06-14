@@ -51,6 +51,32 @@
             </div>
         </div>
     </div>
+    <div class="fixed bg-black/50 inset-0 z-[10]"></div>
+    <div class="fixed bg-white/5 border border-white/15 rounded-xl flex flex-col gap-6 p-4 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-[11] backdrop-blur-3xl w-[calc(100vw-32px)] md:w-1/2 xl:w-1/3">
+        <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold">Заявка на полёт</p>
+        <FormKit type="form" :actions="false" messages-class="hidden" form-class="flex flex-col justify-center gap-6 w-full">
+            <div class="flex gap-4">
+                <Icon class="text-3xl opacity-50" name="material-symbols:person"/>
+                <FormKit validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Имя" name="Имя" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
+            </div>
+            <div class="flex gap-4">
+                <Icon class="text-3xl opacity-50" name="mdi:email-variant"/>
+                <FormKit validation="required|email" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Email" name="Email" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
+            </div>
+            <div class="flex gap-4">
+                <Icon class="text-3xl opacity-50" name="material-symbols:call"/>
+                <FormKit validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Телефон" name="Телефон" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
+            </div>
+            <div class="flex gap-4">
+                <Icon class="text-3xl opacity-50" name="material-symbols:globe"/>
+                <FormKit validation="required" messages-class="text-[#E9556D] font-Cormorant" type="select" :options="['Все']" placeholder="Желаемая планета" name="Желаемая планета" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
+            </div>
+            <button type="submit" class="px-4 py-0.5 rounded-full hover:bg-white/5 h-8 text-[#0B0D17] w-full md:w-1/2 font-Cormorant mx-auto uppercase relative overflow-hidden group">
+                <span class="transition-all duration-700 bg-white absolute inset-0 group-hover:-translate-x-full rounded-xl">Отправить заявку</span>
+                <span class="absolute inset-0 text-white transition-all duration-700 translate-x-full group-hover:translate-x-0 z-[2]">Отправить заявку</span>
+            </button>
+        </FormKit>
+    </div>
 </template>
 
 <script setup>
