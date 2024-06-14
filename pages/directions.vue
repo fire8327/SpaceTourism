@@ -19,7 +19,7 @@
                     </div>
                     <div class="flex flex-col gap-2 items-center text-center">
                         <p class="opacity-50 uppercase text-xs">Время в пути</p>
-                        <p class="font-Cormorant tracking-widest font-semibold text-4xl">0.1 мес</p>
+                        <p class="font-Cormorant tracking-widest font-semibold text-4xl">0.1 мес.</p>
                     </div>
                     <div class="flex flex-col gap-2 items-center text-center">
                         <p class="opacity-50 uppercase text-xs">Сложность</p>
