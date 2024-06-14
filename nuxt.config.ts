@@ -5,13 +5,17 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxtjs/google-fonts",
     "nuxt-icon",
-    "@formkit/nuxt"
+    "@formkit/nuxt",
+    "@nuxtjs/supabase"
   ],
   googleFonts: {
     families: {
       'PT Sans': true,
       'Cormorant': true
     }
+  },
+  supabase: {
+    redirect: false
   },
   postcss: {
     plugins: {
