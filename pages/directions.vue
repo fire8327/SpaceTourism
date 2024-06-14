@@ -5,7 +5,7 @@
             <button @click="filters.type = 'Планеты'" class="flex flex-col after:h-px after:bg-white after:transition-all after:duration-500" :class="filters.type == 'Планеты' ? 'after:w-full' : 'after:w-0'">Планеты</button>
             <button @click="filters.type = 'Спутники'" class="flex flex-col after:h-px after:bg-white after:transition-all after:duration-500" :class="filters.type == 'Спутники' ? 'after:w-full' : 'after:w-0'">Спутники</button>
         </div>
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-4 max-md:hidden">
             <button @click="isFlex = true">
                 <Icon class="text-3xl" :class="isFlex ? 'text-white' : 'text-white/15'" name="material-symbols:flex-direction"/>
             </button>
@@ -16,7 +16,7 @@
     </div>
     <div :class="isFlex ? 'flex flex-col gap-8' : 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6'">        
         <div class="gap-6 px-4 py-8 rounded-xl border border-white/15 bg-[url(/images/hero/directions.png)] bg-cover" :class="isFlex ? 'flex items-center max-lg:flex-col' : 'flex flex-col'" v-for="planet in planets">
-            <div class="overflow-hidden group w-full mx-auto" :class="{'md:w-3/4 lg:w-1/2 xl:w-1/3' : isFlex}">
+            <div class="group w-full mx-auto" :class="{'md:w-3/4 lg:w-1/2 xl:w-1/3' : isFlex}">
                 <img :src="`https://kruhlafaexwyzkfbdwki.supabase.co/storage/v1/object/public/images/planets/${planet.image}`" alt="" class="w-full aspect-square object-cover transition-all duration-500 group-hover:scale-110">
             </div>
             <div class="flex flex-col gap-6 w-full grow" :class="{'lg:w-1/2 xl:w-2/3' : isFlex}">
@@ -43,7 +43,7 @@
                 </div>
                 <div class="flex flex-col gap-4" :class="{'mt-auto' : !isFlex}">
                     <p class="text-3xl uppercase font-semibold tracking-wide">{{ formatNumber(planet.price) }} ₽</p>
-                    <button class="px-4 py-0.5 rounded-full hover:bg-white/5 h-8 text-[#0B0D17] w-[260px] font-Cormorant uppercase relative overflow-hidden group">
+                    <button @click="isFormShow = true, bidForm.planet = `${planet.name}`" class="px-4 py-0.5 rounded-full hover:bg-white/5 h-8 text-[#0B0D17] w-[260px] font-Cormorant uppercase relative overflow-hidden group">
                         <span class="transition-all duration-700 bg-white absolute inset-0 group-hover:-translate-x-full rounded-xl text-center">Оставить заявку</span>
                         <span class="absolute inset-0 text-white transition-all duration-700 translate-x-full group-hover:translate-x-0 z-[2] text-center">Оставить заявку</span>
                     </button>
@@ -51,25 +51,28 @@
             </div>
         </div>
     </div>
-    <div class="fixed bg-black/50 inset-0 z-[10]"></div>
-    <div class="fixed bg-white/5 border border-white/15 rounded-xl flex flex-col gap-6 p-4 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-[11] backdrop-blur-3xl w-[calc(100vw-32px)] md:w-1/2 xl:w-1/3">
-        <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold">Заявка на полёт</p>
+    <div @click="isFormShow = false" class="fixed bg-black/50 inset-0 z-[10] transition-all duration-500" :class="{'-translate-x-full' : !isFormShow}"></div>
+    <div class="fixed bg-white/5 border border-white/15 rounded-xl flex flex-col gap-6 p-4 transition-all duration-500 top-1/2 -translate-y-1/2 z-[11] backdrop-blur-3xl w-[calc(100vw-32px)] md:w-1/2 xl:w-1/4" :class="isFormShow ? 'left-1/2 -translate-x-1/2' : ' translate-x-[3000px]'">
+        <button @click="isFormShow = false" class="self-end">
+            <Icon class="text-3xl" name="ic:sharp-close"/>  
+        </button>
+        <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold text-center">Заявка на полёт</p>
         <FormKit type="form" :actions="false" messages-class="hidden" form-class="flex flex-col justify-center gap-6 w-full">
             <div class="flex gap-4">
                 <Icon class="text-3xl opacity-50" name="material-symbols:person"/>
-                <FormKit validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Имя" name="Имя" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
+                <FormKit v-model="bidForm.name" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Имя" name="Имя" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
             </div>
             <div class="flex gap-4">
                 <Icon class="text-3xl opacity-50" name="mdi:email-variant"/>
-                <FormKit validation="required|email" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Email" name="Email" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
+                <FormKit v-model="bidForm.email" validation="required|email" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Email" name="Email" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
             </div>
             <div class="flex gap-4">
                 <Icon class="text-3xl opacity-50" name="material-symbols:call"/>
-                <FormKit validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Телефон" name="Телефон" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
+                <FormKit v-model="bidForm.phone" validation="required|number" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Телефон" name="Телефон" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
             </div>
             <div class="flex gap-4">
                 <Icon class="text-3xl opacity-50" name="material-symbols:globe"/>
-                <FormKit validation="required" messages-class="text-[#E9556D] font-Cormorant" type="select" :options="['Все']" placeholder="Желаемая планета" name="Желаемая планета" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
+                <FormKit v-model="bidForm.planet" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="select" :options="planetsForm" option-class="text-[#1B1B1B]" name="Желаемый полёт" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white text-white"/>
             </div>
             <button type="submit" class="px-4 py-0.5 rounded-full hover:bg-white/5 h-8 text-[#0B0D17] w-full md:w-1/2 font-Cormorant mx-auto uppercase relative overflow-hidden group">
                 <span class="transition-all duration-700 bg-white absolute inset-0 group-hover:-translate-x-full rounded-xl">Отправить заявку</span>
@@ -108,6 +111,17 @@
     .select('*')   
 
     const planets = ref(data)
+
+
+    /* форма */
+    const isFormShow = ref(false)
+    const bidForm = ref({
+        name: "",
+        email: "",
+        phone: "",
+        planet: ""
+    })
+    const planetsForm = [...new Set(planets.value.map(item => item.name))]
 
 
     /* фильтрация */
