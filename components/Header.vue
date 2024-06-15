@@ -28,10 +28,17 @@
 <script setup>
     /* показ мобильного меню */
     const isMenuShow = ref(false)
+
+
+    /* хук */
+    const nuxtApp = useNuxtApp()
+    nuxtApp.hook('page:start', () => {
+        isMenuShow.value = false
+    })
 </script>
 
 <style>
-.router-link-active::after {
-    width: 100%;
-}
+    .router-link-active::after {
+        width: 100%;
+    }
 </style>
