@@ -112,7 +112,6 @@
     .order('id', { ascending: true })
 
     const planets = ref(data)
-    const filterPlanets = ref(data)
 
 
     /* форма */
@@ -135,11 +134,11 @@
 
     const filterData = () => {
         if (filters.value.type !== "Все") {
-            planets.value = filterPlanets.value.filter(el => {
+            planets.value = data.filter(el => {
                 return el.type === filters.value.type
             })
         } else {
-            planets.value = filterPlanets.value
+            planets.value = data
         }
     }
 </script>
