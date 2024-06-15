@@ -19,18 +19,18 @@
             <div class="flex flex-col gap-2">
                 <p class="text-2xl font-Cormorant tracking-widest font-semibold">Сложность</p>
                 <div class="flex items-center gap-2 md:gap-4">
-                    <button @click="filters.complexity = '1 - 5'" class="rounded-xl px-[5.5px] md:px-4 py-1.5 border border-white/15" :class="{'bg-white/5' : filters.complexity == '1 - 5'}">1 - 5</button>
-                    <button @click="filters.complexity = '6 - 10'" class="rounded-xl px-[5.5px] md:px-4 py-1.5 border border-white/15" :class="{'bg-white/5' : filters.complexity == '6 - 10'}">6 - 10</button>
-                    <button @click="filters.complexity = 'Любая'" class="rounded-xl px-[5.5px] md:px-4 py-1.5 border border-white/15" :class="{'bg-white/5' : filters.complexity == 'Любая'}">Любая</button>
+                    <button @click="filters.complexity = '1 - 5'" class="rounded-xl md:px-4 py-1.5 border border-white/15 max-md:w-1/3" :class="{'bg-white/5' : filters.complexity == '1 - 5'}">1 - 5</button>
+                    <button @click="filters.complexity = '6 - 10'" class="rounded-xl md:px-4 py-1.5 border border-white/15 max-md:w-1/3" :class="{'bg-white/5' : filters.complexity == '6 - 10'}">6 - 10</button>
+                    <button @click="filters.complexity = 'Любая'" class="rounded-xl md:px-4 py-1.5 border border-white/15 max-md:w-1/3" :class="{'bg-white/5' : filters.complexity == 'Любая'}">Любая</button>
                 </div>
             </div>
             <div class="flex flex-col gap-2">
                 <p class="text-2xl font-Cormorant tracking-widest font-semibold">Время в пути</p>
-                <div class="flex items-center gap-2 md:gap-4">
-                    <button @click="filters.minTravelTime = null, filters.maxTravelTime = 1" :class="{'bg-white/5' : filters.minTravelTime == null && filters.maxTravelTime == 1}" class="rounded-xl px-[5.5px] md:px-4 py-1.5 border border-white/15">< 1 года</button>
-                    <button @click="filters.minTravelTime = 1, filters.maxTravelTime = 5" :class="{'bg-white/5' : filters.minTravelTime == 1 && filters.maxTravelTime == 5}" class="rounded-xl px-[5.5px] md:px-4 py-1.5 border border-white/15">1 - 5 лет</button>
-                    <button @click="filters.minTravelTime = 5, filters.maxTravelTime = null" :class="{'bg-white/5' : filters.minTravelTime == 5 && filters.maxTravelTime == null}" class="rounded-xl px-[5.5px] md:px-4 py-1.5 border border-white/15">> 5 лет</button>
-                    <button @click="filters.minTravelTime = null, filters.maxTravelTime = null" :class="{'bg-white/5' : filters.minTravelTime == null && filters.maxTravelTime == null}" class="rounded-xl px-[5.5px] md:px-4 py-1.5 border border-white/15">Любое</button>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 w-full md:w-fit">
+                    <button @click="filters.minTravelTime = null, filters.maxTravelTime = 1" :class="{'bg-white/5' : filters.minTravelTime == null && filters.maxTravelTime == 1}" class="rounded-xl px-4 py-1.5 border border-white/15">< 1 года</button>
+                    <button @click="filters.minTravelTime = 1, filters.maxTravelTime = 5" :class="{'bg-white/5' : filters.minTravelTime == 1 && filters.maxTravelTime == 5}" class="rounded-xl px-4 py-1.5 border border-white/15">1 - 5 лет</button>
+                    <button @click="filters.minTravelTime = 5, filters.maxTravelTime = null" :class="{'bg-white/5' : filters.minTravelTime == 5 && filters.maxTravelTime == null}" class="rounded-xl px-4 py-1.5 border border-white/15">> 5 лет</button>
+                    <button @click="filters.minTravelTime = null, filters.maxTravelTime = null" :class="{'bg-white/5' : filters.minTravelTime == null && filters.maxTravelTime == null}" class="rounded-xl px-4 py-1.5 border border-white/15">Любое</button>
                 </div>
             </div>
             <div class="flex flex-col gap-2">
