@@ -108,7 +108,7 @@
                 </FormKit>
                 <div class="flex flex-col gap-4 rounded-xl px-4 py-8 bg-white/5 backdrop-blur-2xl w-full lg:w-1/2 border border-white/15">
                     <p class="text-base md:text-lg xl:text-xl font-Cormorant uppercase">ДАЙТЕ НАМ ЗНАТЬ</p>
-                    <p class="text-4xl md:text-5xl xl:text-6xl font-Cormorant">Планируете визит? <br>Мы можем помочь!</p>
+                    <p class="text-4xl md:text-5xl xl:text-6xl font-Cormorant">Остались вопросы? <br>Мы можем помочь!</p>
                     <p class="max-w-xl">Сделайте ваше космическое приключение реальностью с нашей помощью. Независимо от ваших потребностей и желаний, мы предлагаем широкий спектр услуг, чтобы ваш визит в космос был незабываемым!</p> 
                     <NuxtLink to="https://t.me/fire83274" target="_blank" class="text-[#D0D6F9] flex items-center gap-2 transition-all duration-500 hover:opacity-50 w-fit">
                         <Icon class="text-3xl" name="ic:twotone-telegram"/>
