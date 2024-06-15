@@ -1,9 +1,9 @@
 <template>
     <div class="flex items-center max-md:flex-col md:justify-between gap-6 p-4 rounded-xl border border-white/15">
         <div class="flex items-center gap-4">
-            <button @click="filters.type = 'Все'" class="flex flex-col after:h-px after:bg-white after:transition-all after:duration-500" :class="filters.type == 'Все' ? 'after:w-full' : 'after:w-0'">Все</button>
-            <button @click="filters.type = 'Планеты'" class="flex flex-col after:h-px after:bg-white after:transition-all after:duration-500" :class="filters.type == 'Планеты' ? 'after:w-full' : 'after:w-0'">Планеты</button>
-            <button @click="filters.type = 'Спутники'" class="flex flex-col after:h-px after:bg-white after:transition-all after:duration-500" :class="filters.type == 'Спутники' ? 'after:w-full' : 'after:w-0'">Спутники</button>
+            <button @click="filters.type = 'Все', filterData()" class="flex flex-col after:h-px after:bg-white after:transition-all after:duration-500" :class="filters.type == 'Все' ? 'after:w-full' : 'after:w-0'">Все</button>
+            <button @click="filters.type = 'Планета', filterData()" class="flex flex-col after:h-px after:bg-white after:transition-all after:duration-500" :class="filters.type == 'Планета' ? 'after:w-full' : 'after:w-0'">Планеты</button>
+            <button @click="filters.type = 'Спутник', filterData()" class="flex flex-col after:h-px after:bg-white after:transition-all after:duration-500" :class="filters.type == 'Спутник' ? 'after:w-full' : 'after:w-0'">Спутники</button>
         </div>
         <div class="flex items-center gap-4 max-md:hidden">
             <button @click="isFlex = true">
@@ -109,8 +109,10 @@
     const { data, error } = await supabase
     .from('planets')
     .select('*')   
+    .order('id', { ascending: true })
 
     const planets = ref(data)
+    const filterPlanets = ref(data)
 
 
     /* форма */
@@ -130,4 +132,14 @@
         maxPrice: null,
         type: "Все"
     })
+
+    const filterData = () => {
+        if (filters.value.type !== "Все") {
+            planets.value = filterPlanets.value.filter(el => {
+                return el.type === filters.value.type
+            })
+        } else {
+            planets.value = filterPlanets.value
+        }
+    }
 </script>
