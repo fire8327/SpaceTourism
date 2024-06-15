@@ -91,15 +91,15 @@
                     <p class="text-2xl font-Cormorant font-semibold uppercase text-center">Свяжитесь с нами</p>
                     <div class="flex gap-4">
                         <Icon class="text-3xl opacity-50" name="material-symbols:person"/>
-                        <FormKit validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Имя" name="Имя" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
+                        <FormKit validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Имя" name="Имя" outer-class="w-full" input-class="focus:outline-none bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
                     </div>
                     <div class="flex gap-4">
                         <Icon class="text-3xl opacity-50" name="mdi:email-variant"/>
-                        <FormKit validation="required|email" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Email" name="Email" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
+                        <FormKit validation="required|email" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Email" name="Email" outer-class="w-full" input-class="focus:outline-none bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
                     </div>
                     <div class="flex gap-4">
                         <Icon class="text-3xl opacity-50" name="material-symbols:call"/>
-                        <FormKit validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Телефон" name="Телефон" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
+                        <FormKit validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Телефон" name="Телефон" outer-class="w-full" input-class="focus:outline-none bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
                     </div>
                     <button type="submit" class="px-4 py-0.5 rounded-full hover:bg-white/5 h-8 text-[#0B0D17] w-full md:w-1/2 font-Cormorant mx-auto uppercase relative overflow-hidden group">
                         <span class="transition-all duration-700 bg-white absolute inset-0 group-hover:-translate-x-full rounded-xl">Отправить заявку</span>
