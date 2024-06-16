@@ -79,7 +79,7 @@
             </div>
         </div>
     </div>
-    <div class="flex flex-col gap-6 rounded-xl p-4 border border-white/15 bg-[url(/images/hero/directions.png)] bg-cover items-center text-center">
+    <div v-else class="flex flex-col gap-6 rounded-xl p-4 border border-white/15 bg-[url(/images/hero/directions.png)] bg-cover items-center text-center">
         <p class="text-4xl font-Cormorant tracking-widest font-semibold">По вашему запросу ничего не найдено</p>
         <p class="opacity-50 max-w-2xl">К сожалению, по вашему запросу ничего не найдено. Попробуйте изменить параметры поиска, уточнить запрос или воспользоваться другими критериями фильтрации. Если у вас возникли вопросы или вам нужна помощь, пожалуйста, свяжитесь с нашей службой поддержки.</p>
         <button @click="cancelFilters" class="px-4 py-0.5 rounded-full hover:bg-white/5 h-8 text-[#0B0D17] w-[260px] font-Cormorant mx-auto uppercase relative overflow-hidden group">
