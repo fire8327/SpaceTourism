@@ -14,8 +14,8 @@
                     <p class="opacity-50">1 {{ converter.from }} = {{ exchangeRate(converter.from, converter.to) }} {{ converter.to }}</p>
                 </div>
             </div>
-            <button @click="changeCurrency">
-                <Icon class="text-5xl max-lg:rotate-90 lg:mb-16" name="tabler:arrows-exchange-2"/>
+            <button @click="changeCurrency" class="transition-all duration-500 max-lg:rotate-90 lg:mb-16 hover:text-white/30">
+                <Icon class="text-5xl" name="tabler:arrows-exchange-2"/>
             </button>
             <div class="flex flex-col gap-4 w-full lg:w-1/2">
                 <div class="flex flex-col gap-2">
