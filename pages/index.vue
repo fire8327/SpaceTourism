@@ -84,7 +84,7 @@
         </NuxtLink>
     </div>
     <div class="col-span-full w-full grid-container">
-        <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold mb-6"><span class="text-white/50">04</span> Контакты</p>
+        <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold mb-6"><span class="text-white/50">04</span> Связаться с нами</p>
         <Feedback></Feedback>
     </div>  
     <div class="flex flex-col gap-6">
