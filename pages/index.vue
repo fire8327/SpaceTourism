@@ -79,7 +79,7 @@
             <img :src="`/images/gallery/${n}.jpg`" v-for="n in 6" alt="" class="aspect-video object-cover rounded-xl transition-all duration-500 max-lg:hover:rotate-90 hover:scale-150 hover:z-[4]" @mouseenter="isOverlayShow = true"  @mouseleave="isOverlayShow = false">
             <div class="fixed inset-0 backdrop-blur-xl transition-all duration-500" :class="isOverlayShow ? 'opacity-100 z-[3]' : ' opacity-0 z-[-1]'"></div>
         </div>
-        <NuxtLink class="self-end rounded-full overflow-hidden border-0 border-white/30 hover:border-[20px] font-Cormorant text-[#0B0D17] w-fit uppercase transition-all duration-500">
+        <NuxtLink to="/gallery" class="self-end rounded-full overflow-hidden border-0 border-white/30 hover:border-[20px] font-Cormorant text-[#0B0D17] w-fit uppercase transition-all duration-500">
             <span class="bg-white px-4 py-2">Посмотреть ещё</span>
         </NuxtLink>
     </div>
