@@ -18,6 +18,7 @@
                         <NuxtLink to="/gallery" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">04</span> Галерея</NuxtLink>
                         <NuxtLink to="/preparing" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">05</span> Подготовка к полёту</NuxtLink>
                         <NuxtLink to="/history" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">06</span> История космонавтики</NuxtLink>
+                        <NuxtLink to="/converter" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">07</span> Конвертер валют</NuxtLink>
                     </div>
                 </div>
             </nav>
