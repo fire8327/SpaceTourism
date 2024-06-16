@@ -31,6 +31,10 @@
             </div>
         </div>
         <div @click="isMenuShow = false" class="fixed w-1/2 h-screen top-0 right-0 z-[4] max-md:hidden" :class="{'hidden' : !isMenuShow}"></div>
+        <button type="button" @click="messageTitle = null" class="fixed top-10 right-10 z-[11] cursor-pointer flex items-center gap-2 px-6 py-2 text-lg rounded-2xl w-fit bg-white/5 border border-white/15 backdrop-blur-3xl" :class="messageType ? ' text-white' : 'text-red-500'" v-if="messageTitle">
+            <Icon class="text-3xl" name="material-symbols:close-small-rounded"/>
+            <span>{{messageTitle}}</span>
+        </button>
     </header>
 </template>
 
@@ -54,6 +58,10 @@
             }
         })
     })
+
+
+    /* создание сообщений */
+    const { messageTitle, messageType } = storeToRefs(useMessagesStore())
 </script>
 
 <style>

@@ -28,28 +28,5 @@
             </div>
         </div>
     </div>
-    <div class="col-span-full w-full bg-[url(/images/contacts/main.jpg)] py-6 grid-container relative bg-cover bg-center">
-        <div class="flex max-lg:flex-col gap-6 place-items-center">
-            <div class="flex flex-col gap-6 w-full lg:w-1/2">
-                <p class="text-2xl font-semibold font-Cormorant tracking-widest">Готовы открыть для себя что-то новое?</p>
-                <p class="opacity-50">Отправьте заявку, заполнив форму справа, мы рассмотрим вашу кандидатуру и свяжемся с вами в течение 24 часов.</p>
-            </div>
-            <FormKit :actions="false" messages-class="hidden" type="form" form-class="flex flex-col gap-6 w-full lg:w-1/2 p-4 rounded-xl bg-white/5 border border-white/15 backdrop-blur-2xl">
-                <FormKit validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Имя" name="Имя" outer-class="w-full" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white"/>
-                <FormKit validation="required|number" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Телефон" name="Телефон" outer-class="w-full" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white"/>
-                <div class="flex items-strat gap-2">
-                    <FormKit validation="required|number" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Рост" name="Рост" outer-class="w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-l-xl border border-white/15 w-full transition-all duration-500 focus:border-white"/>
-                    <FormKit validation="required|number" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Вес" name="Вес" outer-class="w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-r-xl border border-white/15 w-full transition-all duration-500 focus:border-white"/>
-                </div>
-                <button type="submit" class="px-4 py-0.5 rounded-full hover:bg-white/5 h-8 text-[#0B0D17] w-full md:w-1/2 font-Cormorant mx-auto uppercase relative overflow-hidden group">
-                    <span class="transition-all duration-700 bg-white absolute inset-0 group-hover:-translate-x-full rounded-xl">Отправить заявку</span>
-                    <span class="absolute inset-0 text-white transition-all duration-700 translate-x-full group-hover:translate-x-0 z-[2]">Отправить заявку</span>
-                </button>
-            </FormKit>
-        </div>
-    </div>
+    <Feedback></Feedback>    
 </template>
-
-<script setup>
-
-</script>
