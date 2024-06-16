@@ -6,29 +6,27 @@
                 <div class="flex flex-col gap-2">
                     <p class="opacity-50">У меня есть</p>
                     <div class="flex items-center gap-2">
-                        <button class="rounded-xl px-4 py-2 border border-white/15">USD</button>
-                        <button class="rounded-xl px-4 py-2 border border-white/15">EUR</button>
-                        <button class="rounded-xl px-4 py-2 border border-white/15">RUB</button>
+                        <button @click="updateFromCurrency(index)"  :class="converter.from == index ? 'border-white bg-white/5' : 'border-white/15'" class="rounded-xl px-4 py-2 border" v-for="(value, index) in currencies">{{ index }}</button>
                     </div>
                 </div>
                 <div class="flex flex-col gap-2 rounded-xl p-4 bg-white/5 border border-white/15">
-                    <input type="text" class="w-full rounded-xl border border-white/15 bg-transparent px-4 py-2 text-6xl">
-                    <p class="opacity-50">1 USD = 21312312 RUB</p>
+                    <input @input="currencyFrom" v-model="converter.fromCount" type="text" class="w-full rounded-xl border border-white/15 bg-transparent px-4 py-2 text-6xl">
+                    <p class="opacity-50">1 {{ converter.from }} = {{ exchangeRate(converter.from, converter.to) }} {{ converter.to }}</p>
                 </div>
             </div>
-            <Icon class="text-5xl max-lg:rotate-90 lg:mb-16" name="tabler:arrows-exchange-2"/>
+            <button @click="changeCurrency">
+                <Icon class="text-5xl max-lg:rotate-90 lg:mb-16" name="tabler:arrows-exchange-2"/>
+            </button>
             <div class="flex flex-col gap-4 w-full lg:w-1/2">
                 <div class="flex flex-col gap-2">
                     <p class="opacity-50">Хочу приобрести</p>
                     <div class="flex items-center gap-2">
-                        <button class="rounded-xl px-4 py-2 border border-white/15">USD</button>
-                        <button class="rounded-xl px-4 py-2 border border-white/15">EUR</button>
-                        <button class="rounded-xl px-4 py-2 border border-white/15">RUB</button>
+                        <button @click="updateToCurrency(index)"  :class="converter.to == index ? 'border-white bg-white/5' : 'border-white/15'" class="rounded-xl px-4 py-2 border" v-for="(value, index) in currencies">{{ index }}</button>
                     </div>
                 </div>
                 <div class="flex flex-col gap-2 rounded-xl p-4 bg-white/5 border border-white/15">
-                    <input type="text" class="w-full rounded-xl border border-white/15 bg-transparent px-4 py-2 text-6xl">
-                    <p class="opacity-50">1 RUB = 21312312 USD</p>
+                    <input @input="currencyTo" v-model="converter.toCount" type="text" class="w-full rounded-xl border border-white/15 bg-transparent px-4 py-2 text-6xl">
+                    <p class="opacity-50">1 {{ converter.to }} = {{ exchangeRate(converter.to, converter.from) }} {{ converter.from }}</p>
                 </div>
             </div>
         </div>
@@ -36,5 +34,70 @@
 </template>
 
 <script setup>
+    /* курс цен */
+    const currencies = ref({
+        "CC": 1,
+        "USD": 83274,
+        "EUR": 73362,
+        "RUB": 6215838
+    })
 
+
+    /* форма конвертера */
+    const converter = ref({
+        from: "CC",
+        to: "USD",
+        fromCount: 1,
+        toCount: 83274
+    })
+
+
+    /* рассчёт обменного курса */
+    const exchangeRate = (from, to) => {
+        if (currencies.value[from] && currencies.value[to]) {
+            return (currencies.value[to] / currencies.value[from])
+        }
+        return 0
+    }
+
+
+    /* функция конвертации */
+    const convertCurrency = (amount, from, to) => {
+        if (currencies.value[from] && currencies.value[to]) {
+            return (amount / currencies.value[from] * currencies.value[to])
+        }
+        return 0
+    }
+
+
+    /* обновление значений toCount, fromCount */
+    const currencyFrom = () => {
+        converter.value.toCount = convertCurrency(converter.value.fromCount, converter.value.from, converter.value.to).toFixed(2)
+    }
+    const currencyTo = () => {
+        converter.value.fromCount = convertCurrency(converter.value.toCount, converter.value.to, converter.value.from).toFixed(2)
+    }
+
+
+    /* обновление выбранной валюты */
+    const updateFromCurrency = (currency) => {
+        converter.value.from = currency
+        currencyFrom()
+    }
+
+    const updateToCurrency = (currency) => {
+        converter.value.to = currency
+        currencyTo()
+    }
+
+    currencyFrom()
+
+
+    /* функция смены наименований валюты */
+    const changeCurrency = () =>{
+        const transitionalCurrency = converter.value.from
+        converter.value.from = converter.value.to
+        converter.value.to = transitionalCurrency
+        currencyFrom()
+    }
 </script>
