@@ -1,6 +1,18 @@
 <template>
     <div class="flex flex-col gap-6">
         <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold">Конвертер валют</p>
+        <div class="flex max-lg:flex-col gap-6 items-center">
+            <p class="opacity-50 w-full lg:w-1/2">Добро пожаловать на страницу конвертера валют нашего сайта, посвященного космическому туризму! Здесь вы можете легко и быстро перевести стоимость ваших космических приключений из одной валюты в другую. Независимо от того, планируете ли вы отправиться в путешествие на МКС или исследовать Марс, наш конвертер поможет вам точно рассчитать бюджет.</p>
+            <img src="/images/hero/converter.jpg" alt="" class="rounded-xl border border-white/15 w-full lg:w-1/2">
+        </div>
+        <div class="flex flex-col gap-4">
+            <p class="text-2xl font-Cormorant tracking-widest font-semibold">Как пользоваться конвертером валют?</p>
+            <ul class="flex flex-col gap-2 list-inside list-decimal text-white/50">
+                <li><span class="text-white font-semibold font-Cormorant">Выберите валюту отправления</span> — выберите валюту, в которой у вас есть средства.</li>
+                <li><span class="text-white font-semibold font-Cormorant">Выберите валюту назначения</span> — выберите валюту, в которой вы хотите узнать сумму.</li>
+                <li><span class="text-white font-semibold font-Cormorant">Введите сумму</span> — введите сумму, которую вы хотите конвертировать.</li>
+            </ul>
+        </div>
         <div class="flex max-lg:flex-col gap-8 items-center lg:items-end">
             <div class="flex flex-col gap-4 w-full lg:w-1/2">
                 <div class="flex flex-col gap-2">
