@@ -29,6 +29,9 @@
                 <NuxtLink to="https://t.me/fire83274" target="_blank" class="transition-all duration-500 hover:opacity-50 w-fit">
                     <Icon class="text-3xl text-[#D0D6F9]" name="ic:twotone-telegram"/>
                 </NuxtLink>
+                <NuxtLink to="/auth" class="transition-all duration-500 hover:opacity-50 w-fit">
+                    <Icon class="text-3xl text-[#D0D6F9]" name="material-symbols:person"/>
+                </NuxtLink>
                 <button @click="isMenuShow = !isMenuShow" class="focus:outline-none">
                     <Icon class="text-3xl text-[#D0D6F9]" name="ph:list"/>
                 </button>
