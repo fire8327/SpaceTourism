@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col gap-6">
+    <div class="flex flex-col gap-12">
         <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold">Конвертер валют</p>
         <div class="flex max-lg:flex-col gap-6 items-center">
             <p class="opacity-50 w-full lg:w-1/2">Добро пожаловать на страницу конвертера валют нашего сайта, посвященного космическому туризму! Здесь вы можете легко и быстро перевести стоимость ваших космических приключений из одной валюты в другую. Независимо от того, планируете ли вы отправиться в путешествие на МКС или исследовать Марс, наш конвертер поможет вам точно рассчитать бюджет.</p>
