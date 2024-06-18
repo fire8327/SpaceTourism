@@ -7,7 +7,7 @@ export const useFeedbackStore = defineStore("feedback", () => {
         })
     }
     
-    const submitFeedback = async (message, form) => {
+    const submitFeedback = async (message, form = null) => {
         const token = "7474011218:AAEm9AUCMVaBLvXjXk16ULjkV45XBn2mv3c"
         const chatId = "-4220457548"
         const URL = `https://api.telegram.org/bot${token}/sendMessage`
@@ -24,7 +24,10 @@ export const useFeedbackStore = defineStore("feedback", () => {
         if (error.value) return showMessage("При отправке произошла ошибка!", false)
             console.log(message)
         showMessage("Успешная отправка!", true)
-        clearForm(form)
+
+        if(form) {
+            clearForm(form)
+        }
     }
 
     return { submitFeedback, clearForm }

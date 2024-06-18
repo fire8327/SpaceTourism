@@ -71,10 +71,11 @@
                 </div>
                 <div class="flex flex-col gap-4" :class="{'mt-auto' : !isFlex}">
                     <p class="text-3xl font-semibold tracking-widest">{{ formatNumber(planet.price) }} <span class="text-5xl">⌬</span></p>
-                    <button @click="isFormShow = true, bidForm.planet = `${planet.name}`" class="px-4 py-0.5 rounded-full hover:bg-white/5 h-8 text-[#0B0D17] w-[260px] font-Cormorant uppercase relative overflow-hidden group">
+                    <button v-if="authenticated" @click="selectPlanet(planet), makeApplication()" class="px-4 py-0.5 rounded-full hover:bg-white/5 h-8 text-[#0B0D17] w-[260px] font-Cormorant uppercase relative overflow-hidden group">
                         <span class="transition-all duration-700 bg-white absolute inset-0 group-hover:-translate-x-full rounded-xl text-center">Оставить заявку</span>
                         <span class="absolute inset-0 text-white transition-all duration-700 translate-x-full group-hover:translate-x-0 z-[2] text-center">Оставить заявку</span>
                     </button>
+                    <p v-else class="text-base font-semibold tracking-widest font-Cormorant opacity-50">* для оформления заявки войдите в аккаунт</p>
                 </div>
             </div>
         </div>
@@ -87,38 +88,13 @@
             <span class="absolute inset-0 text-white transition-all duration-700 translate-x-full group-hover:translate-x-0 z-[2]">Сбросить фильтры</span>
         </button>
     </div>
-    <div @click="isFormShow = false" class="fixed bg-black/50 inset-0 z-[10] transition-all duration-500" :class="{'-translate-x-full' : !isFormShow}"></div>
-    <div class="fixed bg-white/5 border border-white/15 rounded-xl flex flex-col gap-6 p-4 transition-all duration-500 top-1/2 -translate-y-1/2 z-[11] backdrop-blur-3xl w-[calc(100vw-32px)] md:w-1/2 xl:w-1/4" :class="isFormShow ? 'left-1/2 -translate-x-1/2' : ' translate-x-[3000px]'">
-        <button @click="isFormShow = false" class="self-end">
-            <Icon class="text-3xl" name="ic:sharp-close"/>  
-        </button>
-        <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold text-center">Заявка на полёт</p>
-        <FormKit type="form" :actions="false" messages-class="hidden" form-class="flex flex-col justify-center gap-6 w-full">
-            <div class="flex gap-4">
-                <Icon class="text-3xl opacity-50" name="material-symbols:person"/>
-                <FormKit v-model="bidForm.name" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Имя" name="Имя" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
-            </div>
-            <div class="flex gap-4">
-                <Icon class="text-3xl opacity-50" name="mdi:email-variant"/>
-                <FormKit v-model="bidForm.email" validation="required|email" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Email" name="Email" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
-            </div>
-            <div class="flex gap-4">
-                <Icon class="text-3xl opacity-50" name="material-symbols:call"/>
-                <FormKit v-model="bidForm.phone" validation="required|number" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Телефон" name="Телефон" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white"/>
-            </div>
-            <div class="flex gap-4">
-                <Icon class="text-3xl opacity-50" name="material-symbols:globe"/>
-                <FormKit v-model="bidForm.planet" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="select" :options="planetsForm" option-class="text-[#1B1B1B]" name="Желаемый полёт" outer-class="w-full" input-class="focus:outline-none focus:appe bg-transparent border-b border-white/50 w-full transition-all duration-500 focus:border-white text-white"/>
-            </div>
-            <button type="submit" class="px-4 py-0.5 rounded-full hover:bg-white/5 h-8 text-[#0B0D17] w-full md:w-1/2 font-Cormorant mx-auto uppercase relative overflow-hidden group">
-                <span class="transition-all duration-700 bg-white absolute inset-0 group-hover:-translate-x-full rounded-xl">Отправить заявку</span>
-                <span class="absolute inset-0 text-white transition-all duration-700 translate-x-full group-hover:translate-x-0 z-[2]">Отправить заявку</span>
-            </button>
-        </FormKit>
-    </div>
 </template>
 
 <script setup>
+    /* проверка входа */
+    const { authenticated, id } = storeToRefs(useUserStore())
+
+
     /* расположение */
     const isFlex = ref(true)
 
@@ -148,17 +124,18 @@
     .order('id', { ascending: true })
 
     const planets = ref(data)
+    
 
-
-    /* форма */
-    const isFormShow = ref(false)
-    const bidForm = ref({
-        name: "",
-        email: "",
-        phone: "",
-        planet: ""
+    /* выбор планеты */
+    const desiredPlanet = ref({
+        id: "",
+        name: ""
     })
-    const planetsForm = [...new Set(planets.value.map(item => item.name))]
+
+    const selectPlanet = (planet) => {
+        const { id, name } = planet
+        desiredPlanet.value = { id, name }
+    }
 
 
     /* создание фильтров */
@@ -217,5 +194,32 @@
         filters.value.minTravelTime = null
         filters.value.maxTravelTime = null
         filters.value.type = "Все"
+    }
+
+
+    /* оформление заявки */
+    const { submitFeedback } = useFeedbackStore()
+
+    const makeApplication = async () => {        
+        const { data, error } = await supabase
+        .from('applications')
+        .insert([
+            { userId: id.value, planetId: desiredPlanet.value.id },
+        ])
+        .select()
+
+        const { data:userData, error:userError } = await supabase
+        .from('users')
+        .select()
+        .eq('id', id.value)
+
+        const user = userData[0];
+          
+        let message = `<b>Заявка на полёт!</b> \n` 
+        + `<b>ФИО:</b> ${user.surname} ${user.name} ${user.patronymic}\n` 
+        + `<b>Email:</b> ${user.email}\n` 
+        + `<b>Телефон:</b> ${user.phone}\n` 
+        + `<b>Желаемая планета:</b> ${desiredPlanet.value.name}` 
+        await submitFeedback(message)
     }
 </script>
