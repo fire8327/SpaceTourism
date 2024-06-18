@@ -16,9 +16,10 @@
                         <NuxtLink to="/about" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">02</span> О компании</NuxtLink>
                         <NuxtLink to="/contacts" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">03</span> Контакты</NuxtLink>
                         <NuxtLink to="/gallery" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">04</span> Галерея</NuxtLink>
-                        <NuxtLink to="/preparing" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">05</span> Подготовка к полёту</NuxtLink>
-                        <NuxtLink to="/history" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">06</span> История космонавтики</NuxtLink>
-                        <NuxtLink to="/converter" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">07</span> Конвертер валют</NuxtLink>
+                        <NuxtLink to="/shop" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">05</span> Космический магазин</NuxtLink>
+                        <NuxtLink to="/preparing" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">06</span> Подготовка к полёту</NuxtLink>
+                        <NuxtLink to="/history" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">07</span> История космонавтики</NuxtLink>
+                        <NuxtLink to="/converter" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">08</span> Конвертер валют</NuxtLink>
                     </div>
                 </div>
             </nav>
@@ -29,7 +30,7 @@
                 <NuxtLink to="https://t.me/fire83274" target="_blank" class="transition-all duration-500 hover:opacity-50 w-fit">
                     <Icon class="text-3xl text-[#D0D6F9]" name="ic:twotone-telegram"/>
                 </NuxtLink>
-                <NuxtLink to="/auth" class="transition-all duration-500 hover:opacity-50 w-fit">
+                <NuxtLink :to="authenticated ? '/auth' : '/profile'" class="transition-all duration-500 hover:opacity-50 w-fit">
                     <Icon class="text-3xl text-[#D0D6F9]" name="material-symbols:person"/>
                 </NuxtLink>
                 <button @click="isMenuShow = !isMenuShow" class="focus:outline-none">
@@ -69,6 +70,10 @@
 
     /* создание сообщений */
     const { messageTitle, messageType } = storeToRefs(useMessagesStore())
+
+    
+    /* проверка входа */
+    const { authenticated } = storeToRefs(useUserStore())
 </script>
 
 <style>
