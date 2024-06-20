@@ -24,11 +24,14 @@
                 </div>
             </nav>
             <div class="flex items-center gap-4">
-                <NuxtLink to="mailto:fire83274@gmail.com" class="transition-all duration-500 hover:opacity-50 w-fit">
+                <!-- <NuxtLink to="mailto:fire83274@gmail.com" class="transition-all duration-500 hover:opacity-50 w-fit">
                     <Icon class="text-3xl text-[#D0D6F9]" name="mdi:email-variant"/>
                 </NuxtLink>
                 <NuxtLink to="https://t.me/fire83274" target="_blank" class="transition-all duration-500 hover:opacity-50 w-fit">
                     <Icon class="text-3xl text-[#D0D6F9]" name="ic:twotone-telegram"/>
+                </NuxtLink> -->
+                <NuxtLink v-if="authenticated" to="/cart" class="transition-all duration-500 hover:opacity-50 w-fit">
+                    <Icon class="text-3xl text-[#D0D6F9]" name="ic:twotone-shopping-cart"/>
                 </NuxtLink>
                 <NuxtLink :to="authenticated ? '/auth' : '/profile'" class="transition-all duration-500 hover:opacity-50 w-fit">
                     <Icon class="text-3xl text-[#D0D6F9]" name="material-symbols:person"/>
