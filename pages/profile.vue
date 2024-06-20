@@ -41,7 +41,27 @@
         </div>
     </div>
     <div class="flex flex-col gap-6">
-        <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold"><span class="text-white/50">03</span> Выход из аккаунта</p>
+        <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold"><span class="text-white/50">03</span> Мои заявки</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6" v-if="applications">
+            <div class="flex flex-col gap-4 rounded-xl p-4 border border-white/15 bg-white/5 backdrop-blur-3xl" v-for="application in applications">
+                <p class="tracking-widest font-semibold text-xl"><span class="text-2xl font-Cormorant opacity-50">Id заявки:</span> {{ application.id }}</p>
+                <p class="tracking-widest font-semibold font-Cormorant text-2xl">{{ application.planets.name }}</p>
+                <img :src="`https://kruhlafaexwyzkfbdwki.supabase.co/storage/v1/object/public/images/planets/${application.planets.image}`" alt="" class="w-full">
+                <p class="opacity-50 grow">{{ application.planets.desc }}</p>
+                <div class="text-3xl tracking-widest font-semibold">{{ application.planets.price.toLocaleString() }} <span class="text-5xl">⌬</span></div>
+            </div>
+        </div>
+        <div v-else class="flex flex-col gap-6 p-4 rounded-xl bg-white/5 border border-white/15 backdrop-blur-3xl w-full h-fit self-center text-center items-center">
+            <p class="text-3xl tracking-widest font-semibold font-Cormorant">Здесь пока ничего нет</p>
+            <p class="tracking-widest max-w-xl opacity-50">Кажется, вы еще не оформили ни одной заявки. Не упустите шанс найти что-то особенное!</p>
+            <NuxtLink to="/directions" class="px-4 py-0.5 rounded-full transition-all duration-500 hover:bg-white/5 h-8 text-[#0B0D17] text-center w-[260px] font-Cormorant mx-auto uppercase relative overflow-hidden group">
+                <span class="transition-all duration-700 bg-white absolute inset-0 group-hover:-translate-x-full rounded-xl">К направлениям</span>
+                <span class="absolute inset-0 text-white transition-all duration-700 translate-x-full group-hover:translate-x-0 z-[2]">К направлениям</span>
+            </NuxtLink>
+        </div>
+    </div>
+    <div class="flex flex-col gap-6">
+        <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold"><span class="text-white/50">04</span> Выход из аккаунта</p>
         <button @click="logout()" type="button" class="px-4 py-0.5 rounded-full transition-all duration-500 hover:bg-white/5 h-8 text-[#0B0D17] text-center w-[260px] font-Cormorant uppercase relative overflow-hidden group">
             <span class="transition-all duration-700 bg-white absolute inset-0 group-hover:-translate-x-full rounded-xl">Выход</span>
             <span class="absolute inset-0 text-white transition-all duration-700 translate-x-full group-hover:translate-x-0 z-[2]">Выход</span>
@@ -99,6 +119,13 @@
     .select('*, products(*)')   
     .eq('userId', id.value)  
     .eq('status', 'Оформлен')  
+
+
+    /* заявкм */
+    const { data:applications, error:applicationsError } = await supabase
+    .from('applications')
+    .select('*, planets(*)')   
+    .eq('userId', id.value)   
 
 
     /* выход из аккаунта */
