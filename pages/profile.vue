@@ -20,6 +20,27 @@
         </FormKit>
     </div>
     <div class="flex flex-col gap-6">
+        <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold"><span class="text-white/50">02</span> Мои заказы</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6" v-if="carts">
+            <div class="flex flex-col gap-4 rounded-xl p-4 border border-white/15 bg-white/5 backdrop-blur-3xl" v-for="cart in carts">
+                <p class="tracking-widest font-semibold text-xl"><span class="text-2xl font-Cormorant opacity-50">Id заказа:</span> {{ cart.id }}</p>
+                <p class="tracking-widest font-semibold font-Cormorant text-2xl">{{ cart.products.title }}</p>
+                <NuxtLink :to="`/shop/product-${cart.products.id}`" class="rounded-xl overflow-hidden group">
+                    <img :src="`https://kruhlafaexwyzkfbdwki.supabase.co/storage/v1/object/public/images/products/${cart.products.image}`" alt="" class="transition-all duration-500 group-hover:scale-125 w-full aspect-video object-cover">
+                </NuxtLink>
+                <div class="text-3xl tracking-widest font-semibold">{{ cart.products.price.toLocaleString() }} <span class="text-5xl">⌬</span></div>
+            </div>
+        </div>
+        <div v-else class="flex flex-col gap-6 p-4 rounded-xl bg-white/5 border border-white/15 backdrop-blur-3xl w-full h-fit self-center text-center items-center">
+            <p class="text-3xl tracking-widest font-semibold font-Cormorant">Здесь пока ничего нет</p>
+            <p class="tracking-widest max-w-xl opacity-50">Кажется, вы еще не сделали ни одного заказа. Не упустите шанс найти что-то особенное!</p>
+            <NuxtLink to="/shop" class="px-4 py-0.5 rounded-full transition-all duration-500 hover:bg-white/5 h-8 text-[#0B0D17] text-center w-[260px] font-Cormorant mx-auto uppercase relative overflow-hidden group">
+                <span class="transition-all duration-700 bg-white absolute inset-0 group-hover:-translate-x-full rounded-xl">В магазин</span>
+                <span class="absolute inset-0 text-white transition-all duration-700 translate-x-full group-hover:translate-x-0 z-[2]">В магазин</span>
+            </NuxtLink>
+        </div>
+    </div>
+    <div class="flex flex-col gap-6">
         <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold"><span class="text-white/50">03</span> Выход из аккаунта</p>
         <button @click="logout()" type="button" class="px-4 py-0.5 rounded-full transition-all duration-500 hover:bg-white/5 h-8 text-[#0B0D17] text-center w-[260px] font-Cormorant uppercase relative overflow-hidden group">
             <span class="transition-all duration-700 bg-white absolute inset-0 group-hover:-translate-x-full rounded-xl">Выход</span>
@@ -70,6 +91,14 @@
             showMessage("Данные обновлены!", true)   
         }
     }
+
+
+    /* заказы */
+    const { data:carts, error:cartsError } = await supabase
+    .from('cart')
+    .select('*, products(*)')   
+    .eq('userId', id.value)  
+    .eq('status', 'Оформлен')  
 
 
     /* выход из аккаунта */

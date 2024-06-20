@@ -8,7 +8,7 @@
                     <NuxtLink :to="`/catalog/product-${cart.products.id}`" class="rounded-xl overflow-hidden group">
                         <img :src="`https://kruhlafaexwyzkfbdwki.supabase.co/storage/v1/object/public/images/products/${cart.products.image}`" alt="" class="transition-all duration-500 group-hover:scale-125 w-full aspect-video object-cover">
                     </NuxtLink>
-                    <div class="text-4xl tracking-widest font-semibold font-Cormorant">{{ cart.products.price.toLocaleString() }} ₽</div>
+                    <div class="text-4xl tracking-widest font-semibold font-Cormorant">{{ cart.products.price.toLocaleString() }} <span class="text-5xl">⌬</span></div>
                     <div class="flex items-center gap-2 md:w-1/2">
                         <div class="flex items-center justify-center gap-4 h-full px-4 rounded-xl border white w-1/2">
                             <button :disabled="cart.count<2" @click="minusCard(cart.count, cart.id), cart.count--" :class="{'text-gray-300' : cart.count<2}" class="text-2xl">-</button>
@@ -26,7 +26,7 @@
         <div class="flex flex-col gap-6 lg:w-1/2">
             <p class="text-3xl tracking-widest font-semibold font-Cormorant">Оформление заказа</p>
             <FormKit type="form" @submit="makeOrder()" :actions="false" messages-class="hidden" form-class="flex flex-col gap-4 w-full items-center">
-                <div class="flex items-start gap-2 w-full text-[#1B1B1B]">
+                <div class="flex items-start gap-2 w-full text-white">
                     <FormKit type="text" validation="required|number" messages-class="text-[#E9556D] font-Cormorant" name="Номер карты" outer-class="max-md:w-full md:w-2/4" input-class="px-4 py-2 rounded-xl focus:outline-none focus:border-white w-full border border-white/15 bg-white/5" placeholder="Номер карты"/>
                     <FormKit type="text" validation="required" messages-class="text-[#E9556D] font-Cormorant" name="Срок действия" outer-class="max-md:w-full md:w-1/4" input-class="px-4 py-2 rounded-xl focus:outline-none focus:border-white w-full border border-white/15 bg-white/5" placeholder="YY/YY"/>
                     <FormKit type="text" validation="required|number" messages-class="text-[#E9556D] font-Cormorant" name="CVC" outer-class="max-md:w-full md:w-1/4" input-class="px-4 py-2 rounded-xl focus:outline-none focus:border-white w-full border border-white/15 bg-white/5" placeholder="CVC"/>
