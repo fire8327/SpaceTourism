@@ -9,12 +9,6 @@
                 </NuxtLink>
                 <div class="flex gap-12 lg:gap-16 max-lg:flex-col">
                     <div class="flex flex-col gap-4">
-                        <p class="uppercase font-Cormorant tracking-widest font-semibold text-lg">Ссылки</p>
-                        <NuxtLink to="/" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">00</span> Главная</NuxtLink>
-                        <NuxtLink class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">01</span> Направления</NuxtLink>
-                        <NuxtLink to="/about" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">02</span> О компании</NuxtLink>
-                    </div>
-                    <div class="flex flex-col gap-4">
                         <p class="uppercase font-Cormorant tracking-widest font-semibold text-lg">Контакты</p>
                         <NuxtLink to="https://t.me/fire83274" target="_blank" class="text-[#D0D6F9] flex items-center gap-2 transition-all duration-500 hover:opacity-50 w-fit">
                             <Icon class="text-3xl" name="ic:twotone-telegram"/>

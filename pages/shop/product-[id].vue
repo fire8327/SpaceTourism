@@ -17,6 +17,7 @@
                 <span class="transition-all duration-700 bg-white absolute inset-0 group-hover:-translate-x-full rounded-xl">В корзину</span>
                 <span class="absolute inset-0 text-white transition-all duration-700 translate-x-full group-hover:translate-x-0 z-[2]">В корзину</span>
             </button>
+            <p v-else class="text-base font-semibold tracking-widest font-Cormorant opacity-50">* для покупки товара войдите в аккаунт</p>
         </div>
     </div>
 </template>

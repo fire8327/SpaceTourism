@@ -8,7 +8,6 @@
                     <li><span class="font-semibold text-white font-Cormorant">Паспорт.</span> Визовый режим пока не введен, но на границе будет досмотр.</li>
                     <li><span class="font-semibold text-white font-Cormorant">Тяжелые ботинки.</span> Пригодятся вам в условиях низкой гравитации.</li>
                     <li><span class="font-semibold text-white font-Cormorant">Криптовалюта.</span> Рекомендуем заранее обменять немного Космо-коинов, чтобы купить сувениры.</li>
-                    <li><span class="font-semibold text-white font-Cormorant">Солнцезащитные очки.</span> В космосе нет атмосферы, поэтому солнечные лучи могут быть особенно яркими и вредными для глаз.</li>
                     <li><span class="font-semibold text-white font-Cormorant">Аптечка.</span> Возьмите базовый набор медикаментов на случай небольших травм или недомоганий.</li>
                     <li><span class="font-semibold text-white font-Cormorant">Камера.</span> Запечатлейте удивительные виды и моменты вашего космического путешествия.</li>
                     <li><span class="font-semibold text-white font-Cormorant">Ручка и блокнот.</span> Полезно для заметок, зарисовок и ведения личного дневника экспедиции.</li>
@@ -22,7 +21,6 @@
                     <li><span class="font-semibold text-white font-Cormorant">Плавки/купальник.</span> Море Ясности и Океан Бурь — это большие кратеры. Без воды.</li>
                     <li><span class="font-semibold text-white font-Cormorant">Зонт.</span> В космосе нет дождя, так что он не понадобится.</li>
                     <li><span class="font-semibold text-white font-Cormorant">Косметика.</span> В условиях космоса вам не потребуется ежедневный макияж.</li>
-                    <li><span class="font-semibold text-white font-Cormorant">Бижутерия.</span> Дополнительные украшения могут только мешать и занимать место.</li>
                     <li><span class="font-semibold text-white font-Cormorant">Любимая книга.</span> На борту корабля будет цифровая библиотека с большим выбором литературы.</li>
                 </ul>
             </div>

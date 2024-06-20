@@ -17,7 +17,7 @@
         </div>
         <div class="flex flex-col gap-6 p-4 rounded-xl border border-white/15">
             <div class="flex flex-col gap-2">
-                <p class="text-2xl font-Cormorant tracking-widest font-semibold">Сложность</p>
+                <p class="text-2xl font-Cormorant tracking-widest font-semibold">Сложность полёта</p>
                 <div class="flex items-center gap-2 md:gap-4">
                     <button @click="filters.complexity = '1 - 5'" class="rounded-xl md:px-4 py-1.5 border border-white/15 max-md:w-1/3" :class="{'bg-white/5' : filters.complexity == '1 - 5'}">1 - 5</button>
                     <button @click="filters.complexity = '6 - 10'" class="rounded-xl md:px-4 py-1.5 border border-white/15 max-md:w-1/3" :class="{'bg-white/5' : filters.complexity == '6 - 10'}">6 - 10</button>

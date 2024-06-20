@@ -6,7 +6,7 @@
             <p class="text-2xl md:text-3xl xl:text-4xl font-Cormorant">Итак, вы хотите отправиться в</p>
             <p class="text-4xl md:text-5xl xl:text-6xl font-Cormorant uppercase">Космос</p>
             <p class="max-w-xl">Давайте признаем, если вы хотите отправиться в космос, то лучше уж действительно отправиться в открытый космос, а не зависать где-то на его границе. Ну что ж, расслабьтесь, потому что мы подарим вам по-настоящему незабываемый опыт!</p>
-            <NuxtLink class="rounded-full overflow-hidden border-0 border-white/30 hover:border-[20px] font-Cormorant text-[#0B0D17] w-fit uppercase transition-all duration-500">
+            <NuxtLink to="/directions" class="rounded-full overflow-hidden border-0 border-white/30 hover:border-[20px] font-Cormorant text-[#0B0D17] w-fit uppercase transition-all duration-500">
                 <span class="bg-white px-4 py-2">Исследовать</span>
             </NuxtLink>
         </div>
