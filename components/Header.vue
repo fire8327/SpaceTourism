@@ -10,9 +10,10 @@
                 <nav class="hidden lg:flex items-center gap-8">
                     <NuxtLink to="/" class="nav-link"><span class="text-space-accent/60 mr-1.5 text-xs">00</span>Главная</NuxtLink>
                     <NuxtLink to="/directions" class="nav-link"><span class="text-space-accent/60 mr-1.5 text-xs">01</span>Направления</NuxtLink>
-                    <NuxtLink to="/about" class="nav-link"><span class="text-space-accent/60 mr-1.5 text-xs">02</span>О компании</NuxtLink>
+                    <NuxtLink to="/preparing" class="nav-link"><span class="text-space-accent/60 mr-1.5 text-xs">02</span>Подготовка</NuxtLink>
                     <NuxtLink to="/gallery" class="nav-link"><span class="text-space-accent/60 mr-1.5 text-xs">03</span>Галерея</NuxtLink>
                     <NuxtLink to="/shop" class="nav-link"><span class="text-space-accent/60 mr-1.5 text-xs">04</span>Магазин</NuxtLink>
+                    <NuxtLink to="/converter" class="nav-link"><span class="text-space-accent/60 mr-1.5 text-xs">05</span>Конвертер</NuxtLink>
                 </nav>
     
                 <div class="flex items-center gap-2">

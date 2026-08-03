@@ -17,14 +17,7 @@
                     <p class="stat-label">Email</p>
                     <NuxtLink to="mailto:fire83274@gmail.com" class="text-sm hover:text-space-accent transition-colors w-fit">fire83274@gmail.com</NuxtLink>
                 </div>
-                <div class="flex flex-col gap-1">
-                    <p class="stat-label">Телефон</p>
-                    <NuxtLink to="tel:8 909 304-48-26" class="text-sm hover:text-space-accent transition-colors w-fit">8 909 304-48-26</NuxtLink>
-                </div>
                 <div class="flex items-center gap-3 pt-2">
-                    <NuxtLink to="https://vk.com/fire83274" target="_blank" class="btn-ghost !p-2 !rounded-xl">
-                        <Icon class="text-xl" name="mdi:vk"/>
-                    </NuxtLink>
                     <NuxtLink to="https://t.me/fire83274" target="_blank" class="btn-ghost !p-2 !rounded-xl">
                         <Icon class="text-xl" name="ic:baseline-telegram"/>
                     </NuxtLink>

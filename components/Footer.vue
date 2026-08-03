@@ -12,10 +12,15 @@
 
                 <div class="flex gap-16 max-lg:flex-col">
                     <div class="flex flex-col gap-3">
-                        <p class="section-label !mb-1">Контакты</p>
-                        <NuxtLink to="https://t.me/fire83274" target="_blank" class="text-sm text-white/60 hover:text-space-accent transition-colors flex items-center gap-2 w-fit">
-                            <Icon class="text-lg" name="ic:baseline-telegram"/>
-                            fire83274
+                        <p class="section-label !mb-1">Компания</p>
+                        <NuxtLink to="/about" class="text-sm text-white/60 hover:text-space-accent transition-colors flex items-center gap-2 w-fit">
+                            О компании
+                        </NuxtLink>
+                        <NuxtLink to="/history" class="text-sm text-white/60 hover:text-space-accent transition-colors flex items-center gap-2 w-fit">
+                            История
+                        </NuxtLink>
+                        <NuxtLink to="/contacts" class="text-sm text-white/60 hover:text-space-accent transition-colors flex items-center gap-2 w-fit">
+                            Контакты
                         </NuxtLink>
                     </div>
                     <div class="flex flex-col gap-3">
