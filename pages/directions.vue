@@ -65,7 +65,7 @@
             class="glass-card overflow-hidden group"
             :class="isFlex ? 'flex items-center max-lg:flex-col gap-6 !p-0' : '!p-0'"
         >
-            <div class="overflow-hidden" :class="isFlex ? 'w-full lg:w-2/5 shrink-0' : 'w-full'">
+            <div class="overflow-hidden p-2" :class="isFlex ? 'w-full lg:w-2/5 shrink-0' : 'w-full'">
                 <img
                     :src="`https://kruhlafaexwyzkfbdwki.supabase.co/storage/v1/object/public/images/planets/${planet.image}`"
                     alt=""
