@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="flex flex-col gap-4" :class="{'mt-auto' : !isFlex}">
-                    <p class="text-3xl font-semibold tracking-widest">{{ formatNumber(planet.price) }} <span class="text-5xl">⌬</span></p>
+                    <p class="text-3xl font-semibold tracking-widest flex items-center">{{ formatNumber(planet.price) }} <span class="text-4xl flex">⌬</span></p>
                     <button v-if="authenticated" @click="selectPlanet(planet), makeApplication()" class="px-4 py-0.5 rounded-full hover:bg-white/5 h-8 text-[#0B0D17] w-[260px] font-Cormorant uppercase relative overflow-hidden group">
                         <span class="transition-all duration-700 bg-white absolute inset-0 group-hover:-translate-x-full rounded-xl text-center">Оставить заявку</span>
                         <span class="absolute inset-0 text-white transition-all duration-700 translate-x-full group-hover:translate-x-0 z-[2] text-center">Оставить заявку</span>
