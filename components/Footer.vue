@@ -28,7 +28,7 @@
             </div>
 
             <div class="divider"></div>
-            <p class="text-center text-xs text-white/30">© 2024 SpaceTourism™. All Rights Reserved.</p>
+            <p class="text-center text-xs text-white/30">© 2026 SpaceTourism™. All Rights Reserved.</p>
         </div>
     </footer>
 </template>
