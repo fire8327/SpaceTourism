@@ -1,30 +1,48 @@
 <template>
-    <div class="flex flex-col gap-6">
-        <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold">Подготовка к полёту</p>
-        <div class="flex max-lg:flex-col gap-6">
-            <div class="flex flex-col gap-4 w-full lg:w-1/2">
-                <p class="font-Cormorant tracking-widest font-semibold text-2xl">Не забудьте взять с собой:</p>
-                <ul class="flex flex-col gap-2 list-inside list-disc marker:text-[#D0D6F9] text-white/50">
-                    <li><span class="font-semibold text-white font-Cormorant">Паспорт.</span> Визовый режим пока не введен, но на границе будет досмотр.</li>
-                    <li><span class="font-semibold text-white font-Cormorant">Тяжелые ботинки.</span> Пригодятся вам в условиях низкой гравитации.</li>
-                    <li><span class="font-semibold text-white font-Cormorant">Криптовалюта.</span> Рекомендуем заранее обменять немного Космо-коинов, чтобы купить сувениры.</li>
-                    <li><span class="font-semibold text-white font-Cormorant">Аптечка.</span> Возьмите базовый набор медикаментов на случай небольших травм или недомоганий.</li>
-                    <li><span class="font-semibold text-white font-Cormorant">Камера.</span> Запечатлейте удивительные виды и моменты вашего космического путешествия.</li>
-                    <li><span class="font-semibold text-white font-Cormorant">Ручка и блокнот.</span> Полезно для заметок, зарисовок и ведения личного дневника экспедиции.</li>
+    <div class="flex flex-col gap-12">
+        <SectionTitle title="Подготовка к полёту" subtitle="Что взять с собой и что оставить дома" />
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="glass-panel">
+                <p class="font-display text-xl mb-4">Не забудьте взять</p>
+                <ul class="flex flex-col gap-3">
+                    <li v-for="item in take" :key="item.title" class="flex gap-3 text-sm">
+                        <Icon class="text-space-accent shrink-0 mt-0.5" name="material-symbols:check-circle-outline"/>
+                        <span><strong class="text-white font-medium">{{ item.title }}</strong> — {{ item.text }}</span>
+                    </li>
                 </ul>
             </div>
-            <div class="flex flex-col gap-4 w-full lg:w-1/2">
-                <p class="font-Cormorant tracking-widest font-semibold text-2xl">Это лучше оставить дома:</p>
-                <ul class="flex flex-col gap-2 list-inside list-disc marker:text-[#D0D6F9] text-white/50">
-                    <li><span class="font-semibold text-white font-Cormorant">Телефон.</span> В космосе не ловит ваш любимый оператор и нет Wi-Fi.</li>
-                    <li><span class="font-semibold text-white font-Cormorant">Бутерброды.</span> На борту будет питание, которое не разлетится по кабине в условиях невесомости.</li>
-                    <li><span class="font-semibold text-white font-Cormorant">Плавки/купальник.</span> Море Ясности и Океан Бурь — это большие кратеры. Без воды.</li>
-                    <li><span class="font-semibold text-white font-Cormorant">Зонт.</span> В космосе нет дождя, так что он не понадобится.</li>
-                    <li><span class="font-semibold text-white font-Cormorant">Косметика.</span> В условиях космоса вам не потребуется ежедневный макияж.</li>
-                    <li><span class="font-semibold text-white font-Cormorant">Любимая книга.</span> На борту корабля будет цифровая библиотека с большим выбором литературы.</li>
+            <div class="glass-panel">
+                <p class="font-display text-xl mb-4">Лучше оставить дома</p>
+                <ul class="flex flex-col gap-3">
+                    <li v-for="item in leave" :key="item.title" class="flex gap-3 text-sm">
+                        <Icon class="text-white/30 shrink-0 mt-0.5" name="material-symbols:cancel-outline"/>
+                        <span><strong class="text-white font-medium">{{ item.title }}</strong> — {{ item.text }}</span>
+                    </li>
                 </ul>
             </div>
         </div>
+
+        <Feedback />
     </div>
-    <Feedback></Feedback>    
 </template>
+
+<script setup>
+const take = [
+    { title: 'Паспорт', text: 'На границе будет досмотр.' },
+    { title: 'Тяжёлые ботинки', text: 'Пригодятся в условиях низкой гравитации.' },
+    { title: 'Криптовалюта', text: 'Обменяйте Космо-коины для покупки сувениров.' },
+    { title: 'Аптечка', text: 'Базовый набор медикаментов на всякий случай.' },
+    { title: 'Камера', text: 'Запечатлейте виды вашего путешествия.' },
+    { title: 'Блокнот', text: 'Для заметок и личного дневника экспедиции.' },
+]
+
+const leave = [
+    { title: 'Телефон', text: 'В космосе нет Wi-Fi.' },
+    { title: 'Бутерброды', text: 'На борту будет специальное питание.' },
+    { title: 'Плавки', text: 'Море Ясности — это кратеры без воды.' },
+    { title: 'Зонт', text: 'В космосе нет дождя.' },
+    { title: 'Косметика', text: 'Ежедневный макияж не понадобится.' },
+    { title: 'Книга', text: 'На борту есть цифровая библиотека.' },
+]
+</script>

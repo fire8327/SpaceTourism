@@ -1,86 +1,96 @@
 <template>
-    <header class="w-full grid-container py-6 relative">
+    <header class="w-full grid-container py-5 md:py-6 sticky top-0 z-50 bg-space-bg/80 backdrop-blur-xl border-b border-white/[0.04]">
         <div class="flex items-center justify-between">
-            <NuxtLink to="/" class="flex items-center gap-2">
-                <img src="/images/header/logo.png" alt="" class="w-8">
-                <span class="font-Cormorant">SpaceTourism</span>
+            <NuxtLink to="/" class="flex items-center gap-3 group">
+                <img src="/images/header/logo.png" alt="" class="w-7 opacity-90 group-hover:opacity-100 transition-opacity">
+                <span class="font-display text-lg tracking-tight">SpaceTourism</span>
             </NuxtLink>
-            <nav class="flex transition-all duration-500 z-[5] w-full md:w-1/2 fixed left-0 top-0 h-screen backdrop-blur-xl" :class="{'-translate-x-full' : !isMenuShow}">
-                <button @click="isMenuShow = false" class="absolute top-6 right-6">
-                    <Icon class="text-3xl text-[#D0D6F9]" name="hugeicons:cancel-01"/>
-                </button>
-                <div class="flex grow items-center justify-center">
-                    <div class="flex flex-col gap-6">
-                        <NuxtLink to="/" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">00</span> Главная</NuxtLink>
-                        <NuxtLink to="/directions" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">01</span> Направления</NuxtLink>
-                        <NuxtLink to="/about" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">02</span> О компании</NuxtLink>
-                        <NuxtLink to="/contacts" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">03</span> Контакты</NuxtLink>
-                        <NuxtLink to="/gallery" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">04</span> Галерея</NuxtLink>
-                        <NuxtLink to="/shop" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">05</span> Космический магазин</NuxtLink>
-                        <NuxtLink to="/preparing" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">06</span> Подготовка к полёту</NuxtLink>
-                        <NuxtLink to="/history" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">07</span> История космонавтики</NuxtLink>
-                        <NuxtLink to="/converter" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-full"><span class="font-semibold">08</span> Конвертер валют</NuxtLink>
-                    </div>
-                </div>
+
+            <nav class="hidden lg:flex items-center gap-8">
+                <NuxtLink to="/" class="nav-link"><span class="text-space-accent/60 mr-1.5 text-xs">00</span>Главная</NuxtLink>
+                <NuxtLink to="/directions" class="nav-link"><span class="text-space-accent/60 mr-1.5 text-xs">01</span>Направления</NuxtLink>
+                <NuxtLink to="/about" class="nav-link"><span class="text-space-accent/60 mr-1.5 text-xs">02</span>О компании</NuxtLink>
+                <NuxtLink to="/gallery" class="nav-link"><span class="text-space-accent/60 mr-1.5 text-xs">03</span>Галерея</NuxtLink>
+                <NuxtLink to="/shop" class="nav-link"><span class="text-space-accent/60 mr-1.5 text-xs">04</span>Магазин</NuxtLink>
             </nav>
-            <div class="flex items-center gap-4">
-                <!-- <NuxtLink to="mailto:fire83274@gmail.com" class="transition-all duration-500 hover:opacity-50 w-fit">
-                    <Icon class="text-3xl text-[#D0D6F9]" name="mdi:email-variant"/>
+
+            <div class="flex items-center gap-2">
+                <NuxtLink v-if="authenticated" to="/cart" class="btn-ghost !p-2.5 !rounded-xl">
+                    <Icon class="text-xl" name="ic:twotone-shopping-cart"/>
                 </NuxtLink>
-                <NuxtLink to="https://t.me/fire83274" target="_blank" class="transition-all duration-500 hover:opacity-50 w-fit">
-                    <Icon class="text-3xl text-[#D0D6F9]" name="ic:twotone-telegram"/>
-                </NuxtLink> -->
-                <NuxtLink v-if="authenticated" to="/cart" class="transition-all duration-500 hover:opacity-50 w-fit">
-                    <Icon class="text-3xl text-[#D0D6F9]" name="ic:twotone-shopping-cart"/>
+                <NuxtLink :to="authenticated ? '/profile' : '/auth'" class="btn-ghost !p-2.5 !rounded-xl">
+                    <Icon class="text-xl" name="material-symbols:person-outline"/>
                 </NuxtLink>
-                <NuxtLink :to="authenticated ? '/auth' : '/profile'" class="transition-all duration-500 hover:opacity-50 w-fit">
-                    <Icon class="text-3xl text-[#D0D6F9]" name="material-symbols:person"/>
-                </NuxtLink>
-                <button @click="isMenuShow = !isMenuShow" class="focus:outline-none">
-                    <Icon class="text-3xl text-[#D0D6F9]" name="ph:list"/>
+                <button @click="isMenuShow = !isMenuShow" class="btn-ghost !p-2.5 !rounded-xl lg:hidden">
+                    <Icon class="text-xl" :name="isMenuShow ? 'ph:x' : 'ph:list'"/>
                 </button>
             </div>
         </div>
-        <div @click="isMenuShow = false" class="fixed w-1/2 h-screen top-0 right-0 z-[4] max-md:hidden" :class="{'hidden' : !isMenuShow}"></div>
-        <button type="button" @click="messageTitle = null" class="fixed top-10 right-10 z-[11] cursor-pointer flex items-center gap-2 px-6 py-2 text-lg rounded-2xl w-fit bg-white/5 border border-white/15 backdrop-blur-3xl" :class="messageType ? ' text-white' : 'text-red-500'" v-if="messageTitle">
-            <Icon class="text-3xl" name="material-symbols:close-small-rounded"/>
-            <span>{{messageTitle}}</span>
-        </button>
+
+        <Transition name="menu">
+            <nav v-if="isMenuShow" class="lg:hidden fixed inset-0 top-[65px] z-40 bg-space-bg/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-6">
+                <NuxtLink to="/" class="nav-link text-lg"><span class="text-space-accent/60 mr-2 text-sm">00</span>Главная</NuxtLink>
+                <NuxtLink to="/directions" class="nav-link text-lg"><span class="text-space-accent/60 mr-2 text-sm">01</span>Направления</NuxtLink>
+                <NuxtLink to="/about" class="nav-link text-lg"><span class="text-space-accent/60 mr-2 text-sm">02</span>О компании</NuxtLink>
+                <NuxtLink to="/contacts" class="nav-link text-lg"><span class="text-space-accent/60 mr-2 text-sm">03</span>Контакты</NuxtLink>
+                <NuxtLink to="/gallery" class="nav-link text-lg"><span class="text-space-accent/60 mr-2 text-sm">04</span>Галерея</NuxtLink>
+                <NuxtLink to="/shop" class="nav-link text-lg"><span class="text-space-accent/60 mr-2 text-sm">05</span>Магазин</NuxtLink>
+                <NuxtLink to="/preparing" class="nav-link text-lg"><span class="text-space-accent/60 mr-2 text-sm">06</span>Подготовка</NuxtLink>
+                <NuxtLink to="/history" class="nav-link text-lg"><span class="text-space-accent/60 mr-2 text-sm">07</span>История</NuxtLink>
+                <NuxtLink to="/converter" class="nav-link text-lg"><span class="text-space-accent/60 mr-2 text-sm">08</span>Конвертер</NuxtLink>
+            </nav>
+        </Transition>
+
+        <Transition name="toast">
+            <button
+                v-if="messageTitle"
+                type="button"
+                @click="messageTitle = null"
+                class="fixed top-20 right-4 md:right-8 z-[60] flex items-center gap-2 px-5 py-3 text-sm rounded-2xl glass cursor-pointer"
+                :class="messageType ? 'text-white' : 'text-red-400'"
+            >
+                <Icon class="text-lg" name="material-symbols:close-small-rounded"/>
+                <span>{{ messageTitle }}</span>
+            </button>
+        </Transition>
     </header>
 </template>
 
 <script setup>
-    /* показ мобильного меню */
-    const isMenuShow = ref(false)
+const isMenuShow = ref(false)
 
+const nuxtApp = useNuxtApp()
+nuxtApp.hook('page:start', () => {
+    isMenuShow.value = false
+})
 
-    /* хук */
-    const nuxtApp = useNuxtApp()
-    nuxtApp.hook('page:start', () => {
-        isMenuShow.value = false
+onMounted(() => {
+    window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') isMenuShow.value = false
     })
+})
 
-
-    /* клавиша esc */
-    onMounted(() => {
-        window.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') {
-                isMenuShow.value = false
-            }
-        })
-    })
-
-
-    /* создание сообщений */
-    const { messageTitle, messageType } = storeToRefs(useMessagesStore())
-
-    
-    /* проверка входа */
-    const { authenticated } = storeToRefs(useUserStore())
+const { messageTitle, messageType } = storeToRefs(useMessagesStore())
+const { authenticated } = storeToRefs(useUserStore())
 </script>
 
-<style>
-    .router-link-active::after {
-        width: 100%;
-    }
+<style scoped>
+.menu-enter-active,
+.menu-leave-active {
+    transition: opacity 0.3s ease;
+}
+.menu-enter-from,
+.menu-leave-to {
+    opacity: 0;
+}
+
+.toast-enter-active,
+.toast-leave-active {
+    transition: all 0.3s ease;
+}
+.toast-enter-from,
+.toast-leave-to {
+    opacity: 0;
+    transform: translateY(-8px);
+}
 </style>

@@ -3,36 +3,118 @@
 @tailwind utilities;
 
 @layer base {
-    #__nuxt{
-        @apply flex flex-col min-h-screen bg-[#0B0D17] text-white text-xl font-PT-Sans
+    #__nuxt {
+        @apply flex flex-col min-h-screen bg-space-bg text-white text-base font-sans antialiased;
     }
-        
-    :root{
-        /* максимальная ширина контента */
-        @apply [--widthContent:1280px]
-        /* Растояние от границы брузера по бокам */
-        [--widthContentMargin:15px] sm:[--widthContentMargin:20px] xl:[--widthContentMargin:30px]
-    }    
 
-    /* Настройка кастомных контейнеров */
-    /* Применение системы гридов для расположения контента в ячейку main или full или в любую другую ячейку между именованными линиями grid*/
+    :root {
+        @apply [--widthContent:1200px]
+        [--widthContentMargin:16px] sm:[--widthContentMargin:24px] xl:[--widthContentMargin:40px]
+    }
 
-    .grid-container{        
+    .grid-container {
         grid-template-columns: [full-start] minmax(var(--widthContentMargin), 1fr) [main-start] minmax(0, var(--widthContent)) [main-end] minmax(var(--widthContentMargin), 1fr) [full-end];
-        @apply grid
+        @apply grid;
     }
 
-    .grid-container>*{        
-        @apply col-[main]
-    }    
-
-    .wrapper{ 
-        @apply mr-auto max-w-[var(--widthContent)]
+    .grid-container > * {
+        @apply col-[main];
     }
 
-    .container{        
-        @apply max-w-[var(--widthContent)]
-    } 
+    ::selection {
+        @apply bg-space-accent/30 text-white;
+    }
+}
+
+@layer components {
+    .section-label {
+        @apply text-xs uppercase tracking-[0.2em] text-space-muted font-medium mb-2;
+    }
+
+    .section-title {
+        @apply font-display text-3xl md:text-4xl font-light tracking-tight text-white;
+    }
+
+    .section-heading {
+        @apply flex flex-col gap-1 mb-8 md:mb-10;
+    }
+
+    .text-body {
+        @apply text-space-muted leading-relaxed;
+    }
+
+    .glass {
+        @apply bg-white/[0.03] border border-white/[0.06] backdrop-blur-xl;
+    }
+
+    .glass-card {
+        @apply glass rounded-2xl p-6 transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.05];
+    }
+
+    .glass-panel {
+        @apply glass rounded-2xl p-5 md:p-6;
+    }
+
+    .btn {
+        @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm font-medium tracking-wide transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-space-accent/50;
+    }
+
+    .btn-primary {
+        @apply btn bg-white text-space-bg hover:bg-space-accent hover:scale-[1.02] active:scale-[0.98];
+    }
+
+    .btn-outline {
+        @apply btn border border-white/20 text-white hover:bg-white/10 hover:border-white/30;
+    }
+
+    .btn-ghost {
+        @apply btn text-white/70 hover:text-white hover:bg-white/5;
+    }
+
+    .chip {
+        @apply rounded-full px-4 py-1.5 text-sm border border-white/[0.08] text-white/60 transition-all duration-200 hover:border-white/20 hover:text-white;
+    }
+
+    .chip-active {
+        @apply bg-white/10 border-white/25 text-white;
+    }
+
+    .input-field {
+        @apply w-full px-4 py-2.5 bg-transparent rounded-xl border border-white/[0.08] text-white placeholder:text-white/30 transition-all duration-200 focus:outline-none focus:border-white/25 focus:bg-white/[0.02];
+    }
+
+    .nav-link {
+        @apply relative text-sm text-white/60 hover:text-white transition-colors duration-200 py-1;
+    }
+
+    .nav-link::after {
+        @apply content-[''] absolute left-0 -bottom-0.5 w-0 h-px bg-space-accent transition-all duration-300;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.router-link-active::after {
+        @apply w-full;
+    }
+
+    .nav-link.router-link-active {
+        @apply text-white;
+    }
+
+    .divider {
+        @apply w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent;
+    }
+
+    .img-cover {
+        @apply object-cover rounded-2xl;
+    }
+
+    .stat-label {
+        @apply text-[11px] uppercase tracking-[0.15em] text-space-muted;
+    }
+
+    .stat-value {
+        @apply font-display text-2xl md:text-3xl font-light;
+    }
 }
 
 .line-clamp {

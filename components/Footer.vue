@@ -1,42 +1,34 @@
 <template>
-    <footer class="w-full min-h-[200px] bg-[url(/images/footer/main.png)] bg-cover relative grid-container pt-36 pb-10">
-        <div class="absolute col-span-full top-0 w-full bg-gradient-to-b from-[#0B0D17] to-transparent h-32"></div>
-        <div class="flex flex-col gap-6">
+    <footer class="w-full grid-container mt-auto pt-20 pb-8 border-t border-white/[0.04]">
+        <div class="flex flex-col gap-10">
             <div class="flex gap-12 max-lg:flex-col lg:items-start lg:justify-between">
-                <NuxtLink to="/" class="flex items-center gap-2">
-                    <img src="/images/header/logo.png" alt="" class="w-8">
-                    <span class="font-Cormorant">SpaceTourism</span>
-                </NuxtLink>
-                <div class="flex gap-12 lg:gap-16 max-lg:flex-col">
-                    <div class="flex flex-col gap-4">
-                        <p class="uppercase font-Cormorant tracking-widest font-semibold text-lg">Контакты</p>
-                        <NuxtLink to="https://t.me/fire83274" target="_blank" class="text-[#D0D6F9] flex items-center gap-2 transition-all duration-500 hover:opacity-50 w-fit">
-                            <Icon class="text-3xl" name="ic:twotone-telegram"/>
-                            <span>fire83274</span>
+                <div class="flex flex-col gap-4">
+                    <NuxtLink to="/" class="flex items-center gap-3 group w-fit">
+                        <img src="/images/header/logo.png" alt="" class="w-7 opacity-80 group-hover:opacity-100 transition-opacity">
+                        <span class="font-display text-lg">SpaceTourism</span>
+                    </NuxtLink>
+                    <p class="text-body text-sm max-w-xs">Космический туризм нового поколения. Откройте для себя бесконечность.</p>
+                </div>
+
+                <div class="flex gap-16 max-lg:flex-col">
+                    <div class="flex flex-col gap-3">
+                        <p class="section-label !mb-1">Контакты</p>
+                        <NuxtLink to="https://t.me/fire83274" target="_blank" class="text-sm text-white/60 hover:text-space-accent transition-colors flex items-center gap-2 w-fit">
+                            <Icon class="text-lg" name="ic:baseline-telegram"/>
+                            fire83274
                         </NuxtLink>
-                        <NuxtLink to="mailto:fire83274@gmail.com" class="text-[#D0D6F9] flex items-center gap-2 transition-all duration-500 hover:opacity-50 w-fit">
-                            <Icon class="text-3xl text-[#D0D6F9]" name="mdi:email-variant"/>
-                            <span>fire83274@gmail.com</span>
-                        </NuxtLink>                     
-                        <NuxtLink to="tel:8 909 304-48-26" class="text-[#D0D6F9] flex items-center gap-2 transition-all duration-500 hover:opacity-50 w-fit">
-                            <Icon class="text-3xl text-[#D0D6F9]" name="material-symbols:call"/>
-                            <span>8 909 304-48-26</span>
-                        </NuxtLink>                   
                     </div>
-                    <div class="flex flex-col gap-4">
-                        <p class="uppercase font-Cormorant tracking-widest font-semibold text-lg">Часы работы</p>
-                        <p>ПН-ПТ: 10:00-18:00</p>
-                        <p>СБ: 10:00-16:00</p>
-                        <p>ВС: закрыто</p>               
+                    <div class="flex flex-col gap-3">
+                        <p class="section-label !mb-1">Часы работы</p>
+                        <p class="text-sm text-white/60">ПН–ПТ: 10:00–18:00</p>
+                        <p class="text-sm text-white/60">СБ: 10:00–16:00</p>
+                        <p class="text-sm text-white/60">ВС: выходной</p>
                     </div>
                 </div>
             </div>
-            <div class="w-full h-px bg-white"></div>
-            <p class="text-center">© 2024 <span class="font-Cormorant">SpaceTourism™</span>. All Rights Reserved.</p>
+
+            <div class="divider"></div>
+            <p class="text-center text-xs text-white/30">© 2024 SpaceTourism™. All Rights Reserved.</p>
         </div>
     </footer>
 </template>
-
-<script setup>
-
-</script>

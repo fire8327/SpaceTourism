@@ -1,171 +1,133 @@
-<template>    
-    <div class="col-span-full w-full bg-[url(/images/hero/index.jpg)] bg-cover min-h-[calc(100vh-80px)] relative grid-container">
-        <div class="absolute col-span-full top-0 w-full bg-gradient-to-b from-[#0B0D17] to-transparent h-40"></div>
-        <div class="absolute col-span-full inset-0 bg-[#0B0D17]/30"></div>
-        <div class="flex flex-col gap-6 self-center z-[1]">
-            <p class="text-2xl md:text-3xl xl:text-4xl font-Cormorant">Итак, вы хотите отправиться в</p>
-            <p class="text-4xl md:text-5xl xl:text-6xl font-Cormorant uppercase">Космос</p>
-            <p class="max-w-xl">Давайте признаем, если вы хотите отправиться в космос, то лучше уж действительно отправиться в открытый космос, а не зависать где-то на его границе. Ну что ж, расслабьтесь, потому что мы подарим вам по-настоящему незабываемый опыт!</p>
-            <NuxtLink to="/directions" class="rounded-full overflow-hidden border-0 border-white/30 hover:border-[20px] font-Cormorant text-[#0B0D17] w-fit uppercase transition-all duration-500">
-                <span class="bg-white px-4 py-2">Исследовать</span>
-            </NuxtLink>
+<template>
+    <div class="col-span-full w-full bg-[url(/images/hero/index.jpg)] bg-cover bg-center min-h-[calc(100vh-80px)] relative grid-container items-center">
+        <div class="absolute inset-0 bg-gradient-to-b from-space-bg via-space-bg/40 to-space-bg col-span-full"></div>
+        <div class="relative z-[1] flex flex-col gap-6 max-w-2xl animate-slide-up py-20">
+            <p class="section-label">Добро пожаловать</p>
+            <h1 class="font-display text-5xl md:text-6xl xl:text-7xl font-light leading-[1.1]">
+                Отправьтесь в <span class="text-space-accent">космос</span>
+            </h1>
+            <p class="text-body text-lg max-w-lg">
+                Если вы хотите в космос — отправляйтесь в открытый космос, а не зависайте на его границе. Мы подарим вам по-настоящему незабываемый опыт.
+            </p>
+            <UiButton to="/directions" class="w-fit mt-2">Исследовать</UiButton>
         </div>
-        <div class="absolute col-span-full bottom-0 w-full bg-gradient-to-t from-[#0B0D17] to-transparent h-40"></div>
     </div>
-    <div class="flex items-center max-lg:flex-col gap-6">
-        <img src="/images/firstblock/main.jpg" alt="" class="w-full lg:w-1/2 rounded-xl aspect-video object-cover">
-        <div class="flex flex-col gap-4 w-full lg:w-1/2">
-            <p class="text-3xl font-Cormorant">Надоело летать в отпуск за границу? Как на счет того, чтобы слетать на Луну?</p>
-            <p class="opacity-50">Устали от пакетных туров и пляжного отдыха? Полотенца и магнитики, которые вы привозите из отпуска уже не радуют ваших близких? В следующий раз привезите им настоящий лунный камень!</p>
-            <p class="opacity-50">Мы предлагаем инновационную услугу на туристическом рынке — космический туризм.</p>
-            <p class="opacity-50">Берите отпуск и отправляйтесь с нами в полет!</p>
-        </div>   
+
+    <div class="flex items-center max-lg:flex-col gap-10 lg:gap-16">
+        <img src="/images/firstblock/main.jpg" alt="" class="w-full lg:w-1/2 img-cover aspect-[4/3]">
+        <div class="flex flex-col gap-5 w-full lg:w-1/2">
+            <SectionTitle title="Надоело летать за границу? Слетайте на Луну." />
+            <p class="text-body">Устали от пакетных туров и пляжного отдыха? Полотенца и магнитики уже не радуют близких? Привезите им настоящий лунный камень.</p>
+            <p class="text-body">Мы предлагаем инновационную услугу — космический туризм. Берите отпуск и отправляйтесь с нами в полёт.</p>
+        </div>
     </div>
-    <div class="flex flex-col gap-6">
-        <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold"><span class="text-white/50">01</span> Преимущества</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-            <div v-for="advantage in advantages" class="flex flex-col gap-4 border border-white/25 rounded-xl p-4 bg-white/5 transition-all duration-500 hover:scale-105 hover:z-[4]" @mouseenter="isOverlayShow = true"  @mouseleave="isOverlayShow = false">
-                <div class="flex items-center gap-4 font-semibold">
-                    <Icon class="text-3xl text-[#D0D6F9]" :name="advantage.icon"/>
-                    <p class="font-Cormorant uppercase text-xl tracking-widest">{{ advantage.title }}</p>
+
+    <div class="flex flex-col gap-8">
+        <SectionTitle number="01" title="Преимущества" />
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+            <div v-for="advantage in advantages" :key="advantage.title" class="glass-card group">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-space-accent/10 flex items-center justify-center">
+                        <Icon class="text-xl text-space-accent" :name="advantage.icon"/>
+                    </div>
+                    <p class="font-display text-lg">{{ advantage.title }}</p>
                 </div>
-                <p class="opacity-50">{{ advantage.description }}</p>
+                <p class="text-body text-sm">{{ advantage.description }}</p>
             </div>
         </div>
-        <div class="fixed inset-0 backdrop-blur-xl transition-all duration-500" :class="isOverlayShow ? 'opacity-100 z-[3]' : ' opacity-0 z-[-1]'"></div>
     </div>
-    <div class="flex flex-col gap-6">
-        <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold"><span class="text-white/50">02</span> Как это работает</p>
-        <div class="flex items-center max-lg:flex-col gap-6">
-            <div class="flex flex-col gap-4 relative pl-2 w-full lg:w-1/2">
-                <div class="flex flex-col">
-                    <div class="rounded-full w-2 h-2 bg-[#D0D6F9] -ml-[19px] mt-1"></div>
-                    <p class="font-Cormorant uppercase tracking-widest font-semibold"><span class="text-[#D0D6F9]">01</span> Регистрация и Бронирование</p>
-                    <p class="opacity-70">Начните свое космическое приключение с простого шага — регистрации на нашем сайте. Выберите удобную для вас дату и забронируйте полет, заполнив онлайн-форму. </p>
+
+    <div class="flex flex-col gap-8">
+        <SectionTitle number="02" title="Как это работает" />
+        <div class="flex items-start max-lg:flex-col gap-10 lg:gap-16">
+            <div class="flex flex-col gap-6 w-full lg:w-1/2">
+                <div v-for="(step, i) in steps" :key="i" class="flex gap-4 group">
+                    <div class="flex flex-col items-center">
+                        <div class="w-8 h-8 rounded-full border border-space-accent/30 flex items-center justify-center text-xs text-space-accent font-medium shrink-0">
+                            {{ String(i + 1).padStart(2, '0') }}
+                        </div>
+                        <div v-if="i < steps.length - 1" class="w-px flex-1 bg-white/[0.06] my-2"></div>
+                    </div>
+                    <div class="pb-6">
+                        <p class="font-display text-lg mb-1">{{ step.title }}</p>
+                        <p class="text-body text-sm">{{ step.text }}</p>
+                    </div>
                 </div>
-                <div class="flex flex-col">
-                    <div class="rounded-full w-2 h-2 bg-[#D0D6F9] -ml-[19px] mt-1"></div>
-                    <p class="font-Cormorant uppercase tracking-widest font-semibold"><span class="text-[#D0D6F9]">02</span> Подготовка</p>
-                    <p class="opacity-70">После подтверждения бронирования вы будете приглашены пройти медицинский осмотр и необходимую подготовку. Наши тренировки включают физическую подготовку, тренировки в центрифуге.</p>
-                </div>
-                <div class="flex flex-col">
-                    <div class="rounded-full w-2 h-2 bg-[#D0D6F9] -ml-[19px] mt-1"></div>
-                    <p class="font-Cormorant uppercase tracking-widest font-semibold"><span class="text-[#D0D6F9]">03</span> Предполетная проверка</p>
-                    <p class="opacity-70">Перед полетом проводится предполетная проверка, включающая финальный осмотр оборудования, инструктаж по безопасности и контрольный медосмотр.</p>
-                </div>
-                <div class="flex flex-col">
-                    <div class="rounded-full w-2 h-2 bg-[#D0D6F9] -ml-[19px] mt-1"></div>
-                    <p class="font-Cormorant uppercase tracking-widest font-semibold"><span class="text-[#D0D6F9]">04</span> Полет</p>
-                    <p class="opacity-70">День полета — это момент, когда ваша мечта станет реальностью. Вы сядете на борт нашего космического корабля и отправитесь в невероятное путешествие за пределы земной атмосферы.</p>
-                </div>
-                <div class="flex flex-col">
-                    <div class="rounded-full w-2 h-2 bg-[#D0D6F9] -ml-[19px] mt-1"></div>
-                    <p class="font-Cormorant uppercase tracking-widest font-semibold"><span class="text-[#D0D6F9]">05</span> Возвращение</p>
-                    <p class="opacity-70">После незабываемого путешествия наступает время возвращения на Землю. Наши специалисты обеспечат мягкую посадку и безопасное возвращение.</p>
-                </div>
-                <div class="flex flex-col">
-                    <div class="rounded-full w-2 h-2 bg-[#D0D6F9] -ml-[19px] mt-1"></div>
-                    <p class="font-Cormorant uppercase tracking-widest font-semibold"><span class="text-[#D0D6F9]">06</span> Поделитесь Своей Историей</p>
-                    <p class="opacity-70">Ваши впечатления важны для нас! Поделитесь своими переживаниями и фотографиями в наших социальных сетях и на сайте.</p>
-                </div>
-                <div class="absolute top-0 -left-2 bg-[#D0D6F9]/50 w-[2px] h-full"></div>
             </div>
-            <img src="/images/howitworks/main.jpg" alt="" class="w-full lg:w-1/2 rounded-xl lg:aspect-[7/10] lg:object-cover">
+            <img src="/images/howitworks/main.jpg" alt="" class="w-full lg:w-1/2 img-cover aspect-[3/4] lg:sticky lg:top-28">
         </div>
     </div>
-    <div class="flex flex-col gap-6">
-        <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold"><span class="text-white/50">03</span> Галерея</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            <img :src="`/images/gallery/${n}.jpg`" v-for="n in 6" alt="" class="aspect-video object-cover rounded-xl transition-all duration-500 max-lg:hover:rotate-90 hover:scale-150 hover:z-[4]" @mouseenter="isOverlayShow = true"  @mouseleave="isOverlayShow = false">
-            <div class="fixed inset-0 backdrop-blur-xl transition-all duration-500" :class="isOverlayShow ? 'opacity-100 z-[3]' : ' opacity-0 z-[-1]'"></div>
+
+    <div class="flex flex-col gap-8">
+        <SectionTitle number="03" title="Галерея" />
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+            <div v-for="n in 6" :key="n" class="overflow-hidden rounded-2xl group">
+                <img
+                    :src="`/images/gallery/${n}.jpg`"
+                    alt=""
+                    class="aspect-[4/3] object-cover w-full transition-transform duration-500 group-hover:scale-105"
+                >
+            </div>
         </div>
-        <NuxtLink to="/gallery" class="self-end rounded-full overflow-hidden border-0 border-white/30 hover:border-[20px] font-Cormorant text-[#0B0D17] w-fit uppercase transition-all duration-500">
-            <span class="bg-white px-4 py-2">Посмотреть ещё</span>
-        </NuxtLink>
+        <UiButton to="/gallery" variant="outline" class="self-end">Посмотреть ещё</UiButton>
     </div>
+
     <div class="col-span-full w-full grid-container">
-        <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold mb-6"><span class="text-white/50">04</span> Связаться с нами</p>
-        <Feedback></Feedback>
-    </div>  
+        <SectionTitle number="04" title="Связаться с нами" />
+        <Feedback />
+    </div>
+
     <div class="flex flex-col gap-6">
-        <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold"><span class="text-white/50">05</span> Часто задаваемые вопросы</p>
-        <div class="flex flex-col gap-4">
-            <Question v-for="FAQ in FAQs" v-bind="FAQ"></Question>
-        </div>    
+        <SectionTitle number="05" title="Часто задаваемые вопросы" />
+        <div class="flex flex-col gap-3">
+            <Question v-for="FAQ in FAQs" :key="FAQ.question" v-bind="FAQ" />
+        </div>
     </div>
 </template>
 
 <script setup>
-    /* оверлей */
-    const isOverlayShow = ref(false)
+const advantages = [
+    {
+        icon: 'ion:ios-rocket',
+        title: 'Ракеты',
+        description: 'Современные технологии и высокий уровень комфорта для полного наслаждения полётом.',
+    },
+    {
+        icon: 'ion:ios-nutrition',
+        title: 'Питание',
+        description: 'Разнообразное и сбалансированное питание, разработанное специально для космических путешествий.',
+    },
+    {
+        icon: 'tabler:brand-github-copilot',
+        title: 'Пилоты',
+        description: 'Высококвалифицированные профессионалы с богатым опытом работы в космосе.',
+    },
+    {
+        icon: 'material-symbols:mountain-flag',
+        title: 'Экскурсии',
+        description: 'Уникальные поездки на луноходе по Морю Ясности и Океану Бурь.',
+    },
+]
 
-    
-    /* преимущества */
-    const advantages = [
-        {
-            icon: 'ion:ios-rocket',
-            title: 'Ракеты',
-            description: 'Наши ракеты обеспечивают максимальный комфорт и безопасность для вашего космического путешествия. Современные технологии и высокий уровень комфорта позволят вам наслаждаться полетом в полной мере.',
-        },
-        {
-            icon: 'ion:ios-nutrition',
-            title: 'Питание',
-            description: 'На борту наших ракет вас ждет разнообразное и сбалансированное питание, специально разработанное для космических путешествий. Вкусные и полезные блюда обеспечат вам энергию и хорошее самочувствие на протяжении всего полета.',
-        },
-        {
-            icon: 'tabler:brand-github-copilot',
-            title: 'Пилоты',
-            description: 'Наши пилоты – это высококвалифицированные профессионалы с богатым опытом работы в космосе. Все они являются бывшими космонавтами, что гарантирует высочайший уровень безопасности и уверенность в полете.',
-        },
-        {
-            icon: 'material-symbols:mountain-flag',
-            title: 'Экскурсии',
-            description: 'Мы предлагаем уникальные экскурсии на луноходе по Море Ясности и Океану Бурь. Эти незабываемые поездки позволят вам исследовать поверхность Луны и увидеть захватывающие виды, которые невозможно описать словами.',
-        }
-    ]
+const steps = [
+    { title: 'Регистрация и бронирование', text: 'Выберите дату и забронируйте полёт, заполнив онлайн-форму.' },
+    { title: 'Подготовка', text: 'Медицинский осмотр, физическая подготовка и тренировки в центрифуге.' },
+    { title: 'Предполётная проверка', text: 'Финальный осмотр оборудования, инструктаж и контрольный медосмотр.' },
+    { title: 'Полёт', text: 'Посадка на борт космического корабля и путешествие за пределы атмосферы.' },
+    { title: 'Возвращение', text: 'Мягкая посадка и безопасное возвращение на Землю.' },
+    { title: 'Поделитесь историей', text: 'Расскажите о впечатлениях в социальных сетях и на нашем сайте.' },
+]
 
-
-    /* FAQ */
-    const FAQs = [
-        {
-            "question": "Какой уровень безопасности обеспечивается во время космического полета?",
-            "answer": "Космические полеты проходят строгие проверки и тестирование для обеспечения максимальной безопасности. На борту есть системы аварийного спасения и резервные системы."
-        },
-        {
-            "question": "Как долго длится космический полет до достижения нужной орбиты или космической станции?",
-            "answer": "Обычно полет до Международной космической станции (МКС) занимает около 6 часов."
-        },
-        {
-            "question": "Каковы требования к здоровью для того, чтобы стать космонавтом?",
-            "answer": "Космонавты должны иметь хорошее здоровье и физическую подготовку, проходить медицинские обследования и тренировки."
-        },
-        {
-            "question": "Сколько человек может одновременно находиться на борту космического корабля?",
-            "answer": "Количество человек зависит от типа корабля и миссии, например, на МКС может находиться от 6 до 10 человек."
-        },
-        {
-            "question": "Какие виды научных исследований проводятся в космосе?",
-            "answer": "Проводятся исследования в области медицины, биологии, физики, астрономии и других наук."
-        },
-        {
-            "question": "Как происходит подготовка к космическому полету?",
-            "answer": "Подготовка включает тренировки, симуляторы полетов, медицинские проверки и изучение систем корабля."
-        },
-        {
-            "question": "Как обеспечивается питание и комфорт во время длительного космического полета?",
-            "answer": "Астронавты используют специальные упакованные блюда и системы регенерации воды для поддержания питания и гигиены."
-        },
-        {
-            "question": "Какие опасности могут возникнуть во время космического полета и как они решаются?",
-            "answer": "Опасности включают радиацию и микрогравитацию, которые решаются благодаря системам защиты и подготовке экипажа."
-        },
-        {
-            "question": "Какие виды развлечений доступны для астронавтов во время миссии?",
-            "answer": "Астронавты могут читать, смотреть фильмы, заниматься фотографированием и общаться с семьей через интернет."
-        },
-        {
-            "question": "Какие новые технологии разрабатываются для улучшения космических полетов в будущем?",
-            "answer": "Разрабатываются более мощные ракеты, системы автономного управления и эффективные системы жизнеобеспечения."
-        }
-    ]
+const FAQs = [
+    { question: 'Какой уровень безопасности обеспечивается во время космического полёта?', answer: 'Космические полёты проходят строгие проверки и тестирование для обеспечения максимальной безопасности. На борту есть системы аварийного спасения и резервные системы.' },
+    { question: 'Как долго длится космический полёт до достижения нужной орбиты?', answer: 'Обычно полёт до МКС занимает около 6 часов.' },
+    { question: 'Каковы требования к здоровью для космонавта?', answer: 'Необходимо хорошее здоровье и физическая подготовка, медицинские обследования и тренировки.' },
+    { question: 'Сколько человек может одновременно находиться на борту?', answer: 'Количество зависит от типа корабля и миссии — на МКС от 6 до 10 человек.' },
+    { question: 'Какие виды научных исследований проводятся в космосе?', answer: 'Исследования в области медицины, биологии, физики, астрономии и других наук.' },
+    { question: 'Как происходит подготовка к космическому полёту?', answer: 'Тренировки, симуляторы полётов, медицинские проверки и изучение систем корабля.' },
+    { question: 'Как обеспечивается питание и комфорт во время полёта?', answer: 'Специальные упакованные блюда и системы регенерации воды для поддержания питания и гигиены.' },
+    { question: 'Какие опасности могут возникнуть и как они решаются?', answer: 'Радиация и микрогравитация решаются благодаря системам защиты и подготовке экипажа.' },
+    { question: 'Какие виды развлечений доступны астронавтам?', answer: 'Чтение, фильмы, фотографирование и общение с семьёй через интернет.' },
+    { question: 'Какие новые технологии разрабатываются для будущих полётов?', answer: 'Более мощные ракеты, системы автономного управления и эффективные системы жизнеобеспечения.' },
+]
 </script>

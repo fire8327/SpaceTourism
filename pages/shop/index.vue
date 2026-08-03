@@ -1,17 +1,27 @@
 <template>
-    <div class="flex flex-col gap-6">
-        <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold">Космический магазин</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-            <NuxtLink :to="`/shop/product-${product.id}`" class="flex flex-col gap-4 rounded-xl border border-white/15 bg-white/5 p-4 group transition-all duration-500 hover:border-white" v-for="product in products">
-                <img :src="`https://kruhlafaexwyzkfbdwki.supabase.co/storage/v1/object/public/images/products/${product.image}`" alt="" class="aspect-video object-cover rounded-xl transition-all duration-500 group-hover:scale-110">
-                <p class="font-semibold text-2xl font-Cormorant tracking-widest md:min-h-16">{{ product.title }}</p>
-                <p class="opacity-50 line-clamp-4">{{ product.desc.slice(0, 100) }}</p>
-                <div class="flex flex-col gap-2">
-                    <p class="text-3xl font-semibold tracking-widest">{{ product.price.toLocaleString() }} <span class="text-4xl">⌬</span></p>
-                    <button type="submit" class="px-4 py-0.5 rounded-full transition-all duration-500 group-hover:bg-white h-8 text-white text-center w-[260px] font-Cormorant mx-auto uppercase relative overflow-hidden">
-                        <span class="transition-all duration-700 bg-white/5 absolute inset-0 group-hover:-translate-x-full rounded-xl">Подробнее</span>
-                        <span class="absolute inset-0 text-[#0B0D17] transition-all duration-700 translate-x-full group-hover:translate-x-0 z-[2]">Подробнее</span>
-                    </button>
+    <div class="flex flex-col gap-8">
+        <SectionTitle title="Космический магазин" subtitle="Сувениры и снаряжение для вашего путешествия" />
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <NuxtLink
+                :to="`/shop/product-${product.id}`"
+                class="glass-card !p-0 overflow-hidden group"
+                v-for="product in products"
+                :key="product.id"
+            >
+                <div class="overflow-hidden">
+                    <img
+                        :src="`https://kruhlafaexwyzkfbdwki.supabase.co/storage/v1/object/public/images/products/${product.image}`"
+                        alt=""
+                        class="aspect-[4/3] object-cover w-full transition-transform duration-500 group-hover:scale-105"
+                    >
+                </div>
+                <div class="p-5 flex flex-col gap-2">
+                    <p class="font-display text-lg line-clamp-2">{{ product.title }}</p>
+                    <p class="text-body text-sm line-clamp-2">{{ product.desc.slice(0, 80) }}...</p>
+                    <div class="flex items-center justify-between mt-2">
+                        <p class="stat-value text-xl">{{ product.price.toLocaleString() }} ⌬</p>
+                        <span class="text-xs text-space-accent opacity-0 group-hover:opacity-100 transition-opacity">Подробнее →</span>
+                    </div>
                 </div>
             </NuxtLink>
         </div>
@@ -19,13 +29,7 @@
 </template>
 
 <script setup>
-    /* подключение БД */
-    const supabase = useSupabaseClient() 
-
-    const { data, error } = await supabase
-    .from('products')
-    .select('*')   
-    .order('id', { ascending: true })
-
-    const products = ref(data)
+const supabase = useSupabaseClient()
+const { data } = await supabase.from('products').select('*').order('id', { ascending: true })
+const products = ref(data)
 </script>

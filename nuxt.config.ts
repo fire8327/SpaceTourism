@@ -11,8 +11,8 @@ export default defineNuxtConfig({
   ],
   googleFonts: {
     families: {
-      'PT Sans': true,
-      'Cormorant': true
+      'DM Sans': [400, 500, 600],
+      'Cormorant': [300, 400, 500, 600]
     }
   },
   supabase: {

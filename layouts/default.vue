@@ -1,6 +1,6 @@
 <template>
     <Header/>
-    <main class="grid-container gap-y-14 md:gap-y-20 xl:gap-y-28 grow my-10">
+    <main class="grid-container gap-y-16 md:gap-y-24 grow py-8 md:py-12">
         <slot/>
     </main>
     <Footer/>
