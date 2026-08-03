@@ -41,9 +41,14 @@
 
         <div class="flex flex-col gap-6">
             <SectionTitle number="03" title="Мои заявки" />
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4" v-if="applications && applications.length">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"
+                v-if="applications && applications.length">
                 <div class="glass-card !p-0 overflow-hidden" v-for="application in applications" :key="application.id">
-                    <img :src="`https://kruhlafaexwyzkfbdwki.supabase.co/storage/v1/object/public/images/planets/${application.planets.image}`" alt="" class="aspect-video object-cover w-full">
+                    <div class="overflow-hidden p-2" :class="isFlex ? 'w-full lg:w-2/5 shrink-0' : 'w-full'">
+                        <img :src="`https://kruhlafaexwyzkfbdwki.supabase.co/storage/v1/object/public/images/planets/${application.planets.image}`"
+                            alt=""
+                            class="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
                     <div class="p-5 flex flex-col gap-2">
                         <p class="text-xs text-white/40">Заявка #{{ application.id }}</p>
                         <p class="font-display text-xl">{{ application.planets.name }}</p>
